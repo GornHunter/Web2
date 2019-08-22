@@ -1,0 +1,61 @@
+
+<table class="cenovnik-form" width="30%">
+    <tbody>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Tip Voznje:</span>
+            </td>
+            <td align="left">
+                <select [(ngModel)]="tipVoznje" class="selectbox">
+                    <option>Gradski</option>
+                    <option>Prigradski</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="lightblue-box-label">Dan:</span>
+            </td>
+            <td align="left">
+                <select [(ngModel)]="serviceVoznje.redoviVoznje.dan" class="selectbox">
+                    <option>Radni</option>
+                    <option>Subota</option>
+                    <option>Nedelja</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="lightblue-box-label">Linija</span>
+            </td>
+            <td align="left" valign="top">
+                <div>
+                    <select [(ngModel)]="serviceVoznje.redoviVoznje.linija" class="selectbox" multiple>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>              
+                <div align='right'>
+                    <button type='button' (click)="ispisPolazaka()">Prikazi</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table *ngIf="serviceVoznje.listaVoznji">
+    <tr>
+        <td>Polasci:</td>
+    </tr>
+    <tr *ngFor="let v of serviceVoznje.listaVoznji">
+        <td>{{v.Polasci}}</td>
+    </tr>
+</table>
+
+
