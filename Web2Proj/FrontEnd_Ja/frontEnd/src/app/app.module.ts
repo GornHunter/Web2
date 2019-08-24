@@ -9,6 +9,7 @@ import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
 import { KupovinaKarteComponent } from './kupovina-karte/kupovina-karte.component';
 import { LinijaCompComponent } from './linija-comp/linija-comp.component';
 import { PolazakCompComponent } from './polazak-comp/polazak-comp.component';
+import { PrikazLinijaComponent } from './prikaz-linija/prikaz-linija.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PolazakCompComponent } from './polazak-comp/polazak-comp.component';
     KupovinaKarteComponent,
     RedVoznjeComponent,
     LinijaCompComponent,
-    PolazakCompComponent
+    PolazakCompComponent,
+    PrikazLinijaComponent
   ],
   imports: [
     BrowserModule,

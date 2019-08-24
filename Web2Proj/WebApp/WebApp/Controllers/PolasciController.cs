@@ -24,10 +24,10 @@ namespace WebApp.Controllers
         public IHttpActionResult PostPolazak([FromBody] Polasci pol)
         {
             Polasci polazak = new Polasci();
-           // polazak = pol;
             polazak.Vreme = pol.Vreme;
-            polazak.Linija = pol.Linija;
-            polazak.LinijaId = pol.Linija.Id;
+            polazak.Linija = _unitOfWork.LinijaRep.GetLinija(x => x.Naziv == pol.Linija.Naziv && x.Aktivan == pol.Linija.Aktivan);
+            //polazak.Linija = pol.Linija;
+            //polazak.LinijaId = pol.Linija.Id;
 
             _unitOfWork.PolasciRep.Add(polazak);
             _unitOfWork.Complete();

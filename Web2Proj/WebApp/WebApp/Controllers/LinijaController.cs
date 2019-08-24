@@ -35,7 +35,7 @@ namespace WebApp.Controllers
         [Route("GetLinija")]
         public IHttpActionResult GetLinija()
         {
-            var linije = _unitOfWork.LinijaRep.GetLinije(x => x.Aktivan);
+            var linije = _unitOfWork.LinijaRep.GetLinije(x => x.Aktivan && x.Naziv != null);
             return Ok(linije);
         }
 
@@ -45,6 +45,28 @@ namespace WebApp.Controllers
             var linije = _unitOfWork.LinijaRep.GetLinije(x => x.Aktivan && x.TipVoznje == (TipVoznje)id);
 
             return Ok(linije);
+        }
+
+        [Route("DeleteLinija/{id}")]
+        public IHttpActionResult DeleteLinija(int id)
+        {
+            var linija = _unitOfWork.LinijaRep.GetLinija(x => x.Id == id);
+            if (linija == null)
+                return BadRequest("Linija sa datim id-jem nije nadjena!");
+
+            linija.Aktivan = false;
+
+            var polasci = _unitOfWork.PolasciRep.GetPolasci(x => x.LinijaId == id);
+            if (polasci == null)
+                return BadRequest("Ne postoje polasci za datu liniju!");
+            foreach(var item in polasci)
+            {
+                item.Aktivan = false;
+            }
+
+            _unitOfWork.Complete();
+
+            return Ok("Uspesno obrisana linija.");
         }
     }
 }

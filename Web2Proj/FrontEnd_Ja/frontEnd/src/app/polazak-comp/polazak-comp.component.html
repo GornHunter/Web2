@@ -17,8 +17,8 @@
                 <span class="lightblue-box-label">Linija:</span>
             </td>
             <td align="left">
-                <select [(ngModel)]="polazakInfo.Linija.Naziv" class="selectbox">
-                    <option *ngFor="let p of linijaServis.listaLinija">{{p.Naziv}}</option>
+                <select [(ngModel)]="naziv" class="selectbox">
+                    <option *ngFor="let p of linijaServis.listaLinija" value={{p.Naziv}}>{{p.Naziv}}</option>
                 </select>
              </td>
         </tr>

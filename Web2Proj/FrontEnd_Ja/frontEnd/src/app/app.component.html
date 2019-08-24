@@ -2,18 +2,22 @@
 <h1>{{title}}</h1>
 
 <nav>
-    <button class="button1" (click)="toggleEditor('kupovinaKarte')"><h3>Kupi kartu</h3></button>
+    <button type="button" class="btn btn-outline-dark" (click)="toggleEditor('kupovinaKarte')"><h3>Kupi kartu</h3></button>
     <app-kupovina-karte *ngIf="showKupovina"></app-kupovina-karte>
     <br>
     <br>
-    <button class="button1" (click)="toggleEditor('redVoznje')"><h3>Prikazi red voznje</h3></button>
+    <button class="btn btn-outline-dark"class="btn btn-outline-dark" (click)="toggleEditor('redVoznje')"><h3>Prikazi red voznje</h3></button>
     <app-red-voznje *ngIf="showRedVoznje"></app-red-voznje>
     <br>
     <br>
-    <button class="button1" (click)="toggleEditor('linija')"><h3>Dodaj liniju</h3></button>
+    <button class="btn btn-outline-dark" (click)="toggleEditor('linija')"><h3>Dodaj liniju</h3></button>
     <app-linija-comp *ngIf="showLinija"></app-linija-comp>
     <br>
     <br>
-    <button class="button1" (click)="toggleEditor('polazak')"><h3>Dodaj polazak</h3></button>
+    <button class="btn btn-outline-dark" (click)="toggleEditor('polazak')"><h3>Dodaj polazak</h3></button>
     <app-polazak-comp *ngIf="showPolazak"></app-polazak-comp>
+    <br>
+    <br>
+    <button class="btn btn-outline-dark" (click)="toggleEditor('prikazLinija')"><h3>Prikazi sve linije</h3></button>
+    <app-prikaz-linija *ngIf="showPrikazLinija"></app-prikaz-linija>
 </nav>

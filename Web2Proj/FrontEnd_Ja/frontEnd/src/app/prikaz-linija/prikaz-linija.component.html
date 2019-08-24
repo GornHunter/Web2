@@ -1,0 +1,17 @@
+<table class="cenovnik-form" width="30%" border="1">
+    <tbody>
+        <tr>
+            <td align="left">
+                <span class="lightblue-box-label" *ngFor="let linije of linijeServis.listaLinija">
+                    <label>{{linije.Naziv}}</label>
+                    <button (click)="izmeniLiniju(linije.Id)" class="btn btn-warning">Izmeni</button>
+                    <button (click)="izbrisiLiniju(linije.Id)" class="btn btn-warning">Izbrisi</button>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="absolute" *ngIf="linijeServis.message">
+    <h1>{{linijeServis.error}}</h1>
+</div>
