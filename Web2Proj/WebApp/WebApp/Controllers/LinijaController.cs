@@ -68,5 +68,11 @@ namespace WebApp.Controllers
 
             return Ok("Uspesno obrisana linija.");
         }
+
+        [Route("AzurirajLiniju")]
+        public IHttpActionResult UpdateLinija()
+        {
+            return Ok();
+        }
     }
 }
