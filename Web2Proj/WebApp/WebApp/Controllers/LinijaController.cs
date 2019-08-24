@@ -31,5 +31,20 @@ namespace WebApp.Controllers
 
             return Ok();
         }
+
+        [Route("GetLinija")]
+        public IHttpActionResult GetLinija()
+        {
+            var linije = _unitOfWork.LinijaRep.GetLinije(x => x.Aktivan);
+            return Ok(linije);
+        }
+
+        [Route("GetTipLinije/{id}")]
+        public IHttpActionResult GetTipLinije(int id)
+        {
+            var linije = _unitOfWork.LinijaRep.GetLinije(x => x.Aktivan && x.TipVoznje == (TipVoznje)id);
+
+            return Ok(linije);
+        }
     }
 }

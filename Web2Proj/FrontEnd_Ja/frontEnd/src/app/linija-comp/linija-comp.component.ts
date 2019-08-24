@@ -12,8 +12,8 @@ export class LinijaCompComponent implements OnInit {
   private dodata = "";
 
   linijaInfo: Linija = {
-    naziv: "",
-    tipVoznje: 0
+    Naziv: "",
+    TipVoznje: 0
   }
 
   constructor(private linijaServis: LinijaService) { }

@@ -1,6 +1,6 @@
 export class Linija{
-    naziv: string;
-    tipVoznje: TipVoznje;
+    Naziv: string;
+    TipVoznje: TipVoznje;
 }
 
 export enum TipVoznje{

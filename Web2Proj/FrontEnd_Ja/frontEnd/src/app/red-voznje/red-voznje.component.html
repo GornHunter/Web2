@@ -11,14 +11,17 @@
                     <option>Prigradski</option>
                 </select>
             </td>
+            <td>
+                <button type="button" (click)="ucitajLinije()">Ucitaj Linije</button>
+            </td>
         </tr>
         <tr>
             <td>
                 <span class="lightblue-box-label">Dan:</span>
             </td>
             <td align="left">
-                <select [(ngModel)]="serviceVoznje.redoviVoznje.dan" class="selectbox">
-                    <option>Radni</option>
+                <select [(ngModel)]="redoviVoznje.TipDana" class="selectbox">
+                    <option>RadniDan</option>
                     <option>Subota</option>
                     <option>Nedelja</option>
                 </select>
@@ -30,9 +33,10 @@
             </td>
             <td align="left" valign="top">
                 <div>
-                    <select [(ngModel)]="serviceVoznje.redoviVoznje.linija" class="selectbox" multiple>
-                        <option>7</option>
-                        <option>8</option>
+                    <select [(ngModel)]="redoviVoznje.LinijaIme" class="selectbox" multiple>
+                        <option *ngFor="let linije of serviceVoznje.listaLinija">
+                            {{linije.Naziv}}
+                        </option>
                     </select>
                 </div>
             </td>
@@ -41,7 +45,7 @@
             <td></td>
             <td>              
                 <div align='right'>
-                    <button type='button' (click)="ispisPolazaka()">Prikazi</button>
+                    <button *ngIf="postojeLinije" type='button' (click)="ispisPolazaka()">Prikazi</button>
                 </div>
             </td>
         </tr>
@@ -49,12 +53,12 @@
 </table>
 
 
-<table *ngIf="serviceVoznje.listaVoznji">
+<table *ngIf="serviceVoznje.listPolazaka">
     <tr>
         <td>Polasci:</td>
     </tr>
-    <tr *ngFor="let v of serviceVoznje.listaVoznji">
-        <td>{{v.Polasci}}</td>
+    <tr *ngFor="let v of serviceVoznje.listPolazaka">
+        <td>{{v.Vreme}}</td>
     </tr>
 </table>
 

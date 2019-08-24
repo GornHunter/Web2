@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Voznje } from '../voznje';
 import { RedVoznjiService } from '../red-voznji.service';
+import { TipVoznje } from '../linija';
+import { PolasciZahtev, TipDana } from '../polasci';
 
 @Component({
   selector: 'app-red-voznje',
@@ -9,12 +10,13 @@ import { RedVoznjiService } from '../red-voznji.service';
 })
 export class RedVoznjeComponent implements OnInit {
 
-  tipVoznje: string = "";
+  tipVoznje: string;
 
-  redoviVoznje: Voznje = {
-    dan: "",
-    linija: "",
-    polasci: []
+  postojeLinije: boolean = false;
+
+  redoviVoznje: PolasciZahtev = {
+    LinijaIme: "",
+    TipDana: TipDana.RadniDan
   };
 
   constructor(private serviceVoznje: RedVoznjiService) { }
@@ -23,7 +25,23 @@ export class RedVoznjeComponent implements OnInit {
     //this.service.getVoznje();
   }
 
-  ispisPolazaka(){
+  /*ispisPolazaka(){
     this.serviceVoznje.getVoznje();
+  }*/
+
+  ucitajLinije(){
+    let tip: number;
+    this.postojeLinije = true;
+    if(this.tipVoznje == "Gradski"){
+      tip = 0;
+    }
+    else{
+      tip = 1;
+    }
+    this.serviceVoznje.getLinija(tip);
+  }
+
+  ispisPolazaka(){
+    this.serviceVoznje.getPolasci(this.redoviVoznje);
   }
 }

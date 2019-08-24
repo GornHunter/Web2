@@ -262,9 +262,9 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908211822377_First.cs" />
-    <Compile Include="Migrations\201908211822377_First.Designer.cs">
-      <DependentUpon>201908211822377_First.cs</DependentUpon>
+    <Compile Include="Migrations\201908241102107_PrviDeo.cs" />
+    <Compile Include="Migrations\201908241102107_PrviDeo.Designer.cs">
+      <DependentUpon>201908241102107_PrviDeo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -273,6 +273,8 @@
     <Compile Include="Models\Karta.cs" />
     <Compile Include="Models\Linija.cs" />
     <Compile Include="Models\Polasci.cs" />
+    <Compile Include="Models\PolasciZahtev.cs" />
+    <Compile Include="Models\TipDana.cs" />
     <Compile Include="Models\TipKarte.cs" />
     <Compile Include="Models\TipVoznje.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -387,8 +389,8 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908211822377_First.resx">
-      <DependentUpon>201908211822377_First.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908241102107_PrviDeo.resx">
+      <DependentUpon>201908241102107_PrviDeo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

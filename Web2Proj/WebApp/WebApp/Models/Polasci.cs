@@ -20,6 +20,8 @@ namespace WebApp.Models
 
         public string Vreme { get; set; }
 
+        public TipDana TipDana { get; set; }
+
         public bool Aktivan { get; set; } = true;
 
         public Polasci() { }

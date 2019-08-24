@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Voznje } from './voznje';
+import { TipVoznje, Linija } from './linija';
+import { PolasciZahtev, TipDana, Polasci } from './polasci';
 
 
 @Injectable({
@@ -8,19 +9,25 @@ import { Voznje } from './voznje';
 })
 export class RedVoznjiService {
 
-  private voznjaUrl = 'http://localhost:52295/api/RedVoznje';
+  private voznjaUrl = 'http://localhost:52295/api/Linija/';
 
-  listaVoznji: Voznje[];
+  private polasciUrl = 'http://localhost:52295/api/Polasci/';
 
-  redoviVoznje: Voznje = {
-    dan: "",
-    linija: "",
-    polasci: []
-  };
+  listaLinija: Linija[];
+
+  listPolazaka: Polasci[];
 
   constructor(private http: HttpClient) { }
 
-  getVoznje() {
+  /*getVoznje() {
     this.http.get(this.voznjaUrl+'/GetVoznje?dan='+this.redoviVoznje.dan+'&linija='+this.redoviVoznje.linija).toPromise().then(rez => this.listaVoznji = rez as Voznje[]);
+  }*/
+
+  getLinija(id: number){
+    this.http.get(this.voznjaUrl+'GetTipLinije/'+id).toPromise().then(rez => this.listaLinija = rez as Linija[]);
+  }
+
+  getPolasci(rv: PolasciZahtev){
+    this.http.get(this.polasciUrl+'GetPolasci?naziv='+rv.LinijaIme+'&tipDana='+rv.TipDana).toPromise().then(rez => this.listPolazaka = rez as Polasci[]);
   }
 }

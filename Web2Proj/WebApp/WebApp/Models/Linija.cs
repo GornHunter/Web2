@@ -33,6 +33,8 @@ namespace WebApp.Models
             set { id = value; }
         }
 
+        public bool Aktivan { get; set; } = true;
+
         public Linija() { }
     }
 }

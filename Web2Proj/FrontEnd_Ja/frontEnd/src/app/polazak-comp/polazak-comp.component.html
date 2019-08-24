@@ -1,0 +1,47 @@
+<table class="cenovnik-form" width="30%">
+    <tbody>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Tip Dana:</span>
+            </td>
+            <td align="left">
+                <select [(ngModel)]="polazakInfo.TipDana" class="selectbox">
+                    <option>RadniDan</option>
+                    <option>Subota</option>
+                    <option>Nedelja</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Linija:</span>
+            </td>
+            <td align="left">
+                <select [(ngModel)]="polazakInfo.Linija.Naziv" class="selectbox">
+                    <option *ngFor="let p of linijaServis.listaLinija">{{p.Naziv}}</option>
+                </select>
+             </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Vreme:</span>
+            </td>
+            <td align="left">
+                <input [(ngModel)]="polazakInfo.Vreme"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>              
+                <div align='right'>
+                    <button type='button' (click)="addPolazak()">Dodaj</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="absolute" *ngIf="dodata">
+    <h1>{{dodata}}</h1>
+</div>

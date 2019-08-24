@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
 import { KupovinaKarteComponent } from './kupovina-karte/kupovina-karte.component';
 import { LinijaCompComponent } from './linija-comp/linija-comp.component';
+import { PolazakCompComponent } from './polazak-comp/polazak-comp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KupovinaKarteComponent,
     RedVoznjeComponent,
-    LinijaCompComponent
+    LinijaCompComponent,
+    PolazakCompComponent
   ],
   imports: [
     BrowserModule,
