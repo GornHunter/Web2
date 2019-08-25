@@ -15,3 +15,40 @@
 <div class="absolute" *ngIf="linijeServis.message">
     <h1>{{linijeServis.error}}</h1>
 </div>
+
+
+<table width="30%" *ngIf="promena">
+    <tbody>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Naziv:</span>
+            </td>
+            <td align="left">
+                <input [(ngModel)]="linijeServis.linijaInfo.Naziv"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Tip voznje:</span>
+            </td>
+            <td align="left">
+               <select [(ngModel)]="linijeServis.linijaInfo.TipVoznje" selected class="selectbox">
+                    <option value=0>Gradski</option>
+                    <option value=1>Prigradski</option>
+               </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>              
+                <div align='right'>
+                    <button (click)="update(linijeServis.linijaInfo)">Sacuvaj</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="mes">
+    <h1>{{mes}}</h1>
+</div>

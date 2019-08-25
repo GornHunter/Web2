@@ -39,6 +39,14 @@ namespace WebApp.Controllers
             return Ok(linije);
         }
 
+        [Route("GetLinijaId/{id}")]
+        public IHttpActionResult GetLinijaId(int id)
+        {
+            var linija = _unitOfWork.LinijaRep.GetLinija(x => x.Id == id);
+
+            return Ok(linija);
+        }
+
         [Route("GetTipLinije/{id}")]
         public IHttpActionResult GetTipLinije(int id)
         {
@@ -70,8 +78,24 @@ namespace WebApp.Controllers
         }
 
         [Route("AzurirajLiniju")]
-        public IHttpActionResult UpdateLinija()
+        public IHttpActionResult AzurirajLiniju(Linija linija)
         {
+            var lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);
+            lin.Naziv = linija.Naziv;
+            lin.TipVoznje = linija.TipVoznje;
+            _unitOfWork.Complete();
+            
+            return Ok();
+        }
+
+        [Route("Update")]
+        public IHttpActionResult Update(Linija linija)
+        {
+            var lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);
+            lin.Naziv = linija.Naziv;
+            lin.TipVoznje = linija.TipVoznje;
+            _unitOfWork.Complete();
+
             return Ok();
         }
     }

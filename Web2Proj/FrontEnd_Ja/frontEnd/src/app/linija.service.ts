@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Linija } from './linija';
-import { ok } from 'assert';
+import { Linija, TipVoznje } from './linija';
 import { Subject } from 'rxjs';
 
 const httpOptions = {
@@ -16,6 +15,10 @@ export class LinijaService {
   private linijaUrl = 'http://localhost:52295/api/Linija/';
 
   listaLinija: Linija[];
+  linijaInfo: Linija = {
+    Naziv: "",
+    TipVoznje: TipVoznje.Gradski
+  };
   private lineChanged = new Subject<Linija[]>()
 
   message: string = "";
@@ -28,6 +31,10 @@ export class LinijaService {
 
   getLinija() {
     this.http.get(this.linijaUrl+'GetLinija').toPromise().then(rez => this.listaLinija = rez as Linija[]);
+  }
+
+  getLinijaId(id: number){
+    this.http.get(this.linijaUrl+'GetLinijaId/'+id).toPromise().then(rez => this.linijaInfo = rez as Linija);
   }
 
   getLinijaSub(){
@@ -46,5 +53,11 @@ export class LinijaService {
       ok => this.message = data;
       error => this.message = data;
     });
+  }
+
+  sacuvajIzmene(lin: Linija){
+    console.log('razvalio')
+    return this.http.post(this.linijaUrl+'Update', lin, httpOptions);
+    //console.log('zavrsio posao')
   }
 }

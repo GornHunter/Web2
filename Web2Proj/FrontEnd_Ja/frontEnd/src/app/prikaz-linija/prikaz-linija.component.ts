@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LinijaService } from '../linija.service';
+import { Linija, TipVoznje } from '../linija';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,7 +10,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PrikazLinijaComponent implements OnInit {
 
-  constructor(private linijeServis: LinijaService) { }
+  promena: boolean = false;
+  mes: string = "";
+
+  constructor(private linijeServis: LinijaService, private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -20,5 +24,15 @@ export class PrikazLinijaComponent implements OnInit {
 
   izbrisiLiniju(id: number){
     this.linijeServis.izbrisiLiniju(id);
+  }
+
+  izmeniLiniju(id: number){
+    this.promena = true;
+    this.linijeServis.getLinijaId(id);
+  }
+
+  update(lin: Linija): void{
+    console.log('Usao')
+    this.linijeServis.sacuvajIzmene(lin).subscribe(() => this.mes = "Azuriran!");
   }
 }
