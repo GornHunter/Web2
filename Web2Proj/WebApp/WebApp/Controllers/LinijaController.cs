@@ -26,10 +26,28 @@ namespace WebApp.Controllers
             Linija linija = new Linija();
             linija = lin;
 
+            List<Linija> l = _unitOfWork.LinijaRep.GetLinije(x => x.Aktivan);
+
+            if(l == null)
+            {
+                _unitOfWork.LinijaRep.Add(linija);
+                _unitOfWork.Complete();
+
+                return Ok("Linija je uspesno dodata.");
+            }
+
+            foreach(var item in l)
+            {
+                if(linija.Naziv == item.Naziv)
+                {
+                    return Ok("Linija sa tim nazivom vec postoji!");
+                }
+            }
+
             _unitOfWork.LinijaRep.Add(linija);
             _unitOfWork.Complete();
 
-            return Ok();
+            return Ok("Linija je uspesno dodata.");
         }
 
         [Route("GetLinija")]
@@ -60,13 +78,17 @@ namespace WebApp.Controllers
         {
             var linija = _unitOfWork.LinijaRep.GetLinija(x => x.Id == id);
             if (linija == null)
-                return BadRequest("Linija sa datim id-jem nije nadjena!");
+                return Ok("Linija sa datim id-jem nije nadjena!");
 
             linija.Aktivan = false;
 
             var polasci = _unitOfWork.PolasciRep.GetPolasci(x => x.LinijaId == id);
             if (polasci == null)
-                return BadRequest("Ne postoje polasci za datu liniju!");
+            {
+                _unitOfWork.Complete();
+                return Ok("Linija je uspesno obrisana.");
+            }
+
             foreach(var item in polasci)
             {
                 item.Aktivan = false;
@@ -74,29 +96,27 @@ namespace WebApp.Controllers
 
             _unitOfWork.Complete();
 
-            return Ok("Uspesno obrisana linija.");
+            return Ok("Linija je uspesno obrisana.");
         }
 
         [Route("AzurirajLiniju")]
         public IHttpActionResult AzurirajLiniju(Linija linija)
         {
-            var lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);
+            List<Linija> l = _unitOfWork.LinijaRep.GetLinije(x => x.Aktivan);
+            foreach (var item in l)
+            {
+                if (linija.Naziv == item.Naziv)
+                    return Ok("Linija sa tim imenom vec postoji!");
+            }
+
+            var lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);         
+
             lin.Naziv = linija.Naziv;
             lin.TipVoznje = linija.TipVoznje;
+
             _unitOfWork.Complete();
             
-            return Ok();
-        }
-
-        [Route("Update")]
-        public IHttpActionResult Update(Linija linija)
-        {
-            var lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);
-            lin.Naziv = linija.Naziv;
-            lin.TipVoznje = linija.TipVoznje;
-            _unitOfWork.Complete();
-
-            return Ok();
+            return Ok("Linija je uspesno azurirana.");
         }
     }
 }

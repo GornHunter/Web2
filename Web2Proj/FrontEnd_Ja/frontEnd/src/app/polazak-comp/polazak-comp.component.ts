@@ -14,6 +14,7 @@ export class PolazakCompComponent implements OnInit {
   private dodata = "";
 
   naziv: string = "";
+  tipDana: TipDana;
 
   polazakInfo: Polasci = {
     Linija: new Linija,
@@ -25,13 +26,11 @@ export class PolazakCompComponent implements OnInit {
   lines : Linija[];
   ngOnInit() {
    this.linijaServis.getLinija();
-   //this.linijaServis.getLinijaSub().subscribe((data:Linija[]) => {this.lines = data;})
-   //console.log(this.lines);
   }
 
   addPolazak(): void{
     this.polazakInfo.Linija.Naziv = this.naziv;
-    console.log(this.polazakInfo.Linija.Naziv);
+    this.polazakInfo.TipDana = this.tipDana;
     this.polasciServis.addPolazak(this.polazakInfo).subscribe(() => this.dodata = "Polazak je uspesno dodat.")
   }
 }

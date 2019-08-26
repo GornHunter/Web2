@@ -16,12 +16,12 @@ export class LinijaCompComponent implements OnInit {
     TipVoznje: 0
   }
 
-  constructor(private linijaServis: LinijaService) { }
+  constructor(public linijaServis: LinijaService) { }
 
   ngOnInit() {
   }
 
   addLinija(): void{
-    this.linijaServis.addLinija(this.linijaInfo).subscribe(() => this.dodata = "Linija je uspesno dodata.")
+    this.linijaServis.addLinija(this.linijaInfo).subscribe((data:string) => this.dodata = data);
   }
 }

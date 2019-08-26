@@ -16,14 +16,16 @@ export class PrikazLinijaComponent implements OnInit {
   constructor(private linijeServis: LinijaService, private http: HttpClient) { }
 
   ngOnInit() {
+    this.linijeServis.getLinija();
   }
 
   ucitajLinije(){
     this.linijeServis.getLinija();
   }
 
-  izbrisiLiniju(id: number){
+  izbrisiLiniju(id: number): void{
     this.linijeServis.izbrisiLiniju(id);
+    this.linijeServis.getLinija();
   }
 
   izmeniLiniju(id: number){
@@ -32,7 +34,7 @@ export class PrikazLinijaComponent implements OnInit {
   }
 
   update(lin: Linija): void{
-    console.log('Usao')
-    this.linijeServis.sacuvajIzmene(lin).subscribe(() => this.mes = "Azuriran!");
+    this.linijeServis.sacuvajIzmene(lin).subscribe((data:string) => this.mes = data);
+    this.linijeServis.getLinija();
   }
 }

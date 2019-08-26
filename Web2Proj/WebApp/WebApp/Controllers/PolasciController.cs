@@ -26,8 +26,7 @@ namespace WebApp.Controllers
             Polasci polazak = new Polasci();
             polazak.Vreme = pol.Vreme;
             polazak.Linija = _unitOfWork.LinijaRep.GetLinija(x => x.Naziv == pol.Linija.Naziv && x.Aktivan == pol.Linija.Aktivan);
-            //polazak.Linija = pol.Linija;
-            //polazak.LinijaId = pol.Linija.Id;
+            polazak.TipDana = pol.TipDana;
 
             _unitOfWork.PolasciRep.Add(polazak);
             _unitOfWork.Complete();
@@ -40,9 +39,17 @@ namespace WebApp.Controllers
         {
             var linije = _unitOfWork.LinijaRep.GetLinija(x => x.Naziv == naziv && x.Aktivan);
 
-            var polasci = _unitOfWork.PolasciRep.GetPolasci(x => x.TipDana == tipDana && x.Aktivan);
+            var polasci = _unitOfWork.PolasciRep.GetPolasci(x => x.TipDana == tipDana && x.Aktivan && x.LinijaId == linije.Id);
 
             return Ok(polasci);
+        }
+
+        [Route("IzbrisiPolazak/{id}")]
+        public IHttpActionResult IzbrisiPolazak(int id)
+        {
+
+
+            return Ok();
         }
     }
 }

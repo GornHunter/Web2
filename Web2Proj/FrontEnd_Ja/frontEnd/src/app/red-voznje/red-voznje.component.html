@@ -20,10 +20,10 @@
                 <span class="lightblue-box-label">Dan:</span>
             </td>
             <td align="left">
-                <select [(ngModel)]="redoviVoznje.TipDana" class="selectbox">
-                    <option>RadniDan</option>
-                    <option>Subota</option>
-                    <option>Nedelja</option>
+                <select [(ngModel)]="redoviVoznje.TipDana" selected class="selectbox">
+                    <option value=0>RadniDan</option>
+                    <option value=1>Subota</option>
+                    <option value=2>Nedelja</option>
                 </select>
             </td>
         </tr>

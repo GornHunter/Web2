@@ -22,12 +22,7 @@ export class RedVoznjeComponent implements OnInit {
   constructor(private serviceVoznje: RedVoznjiService) { }
 
   ngOnInit() {
-    //this.service.getVoznje();
   }
-
-  /*ispisPolazaka(){
-    this.serviceVoznje.getVoznje();
-  }*/
 
   ucitajLinije(){
     let tip: number;
