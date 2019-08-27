@@ -20,7 +20,7 @@
                 <span class="lightblue-box-label">Dan:</span>
             </td>
             <td align="left">
-                <select [(ngModel)]="redoviVoznje.TipDana" selected class="selectbox">
+                <select [(ngModel)]="redoviVoznje.TipDana" class="selectbox">
                     <option value=0>RadniDan</option>
                     <option value=1>Subota</option>
                     <option value=2>Nedelja</option>
@@ -45,7 +45,7 @@
             <td></td>
             <td>              
                 <div align='right'>
-                    <button *ngIf="postojeLinije" type='button' (click)="ispisPolazaka()">Prikazi</button>
+                    <button *ngIf="postojeLinije && redoviVoznje.LinijaIme" type='button' (click)="ispisPolazaka()">Prikazi</button>
                 </div>
             </td>
         </tr>
@@ -53,7 +53,7 @@
 </table>
 
 
-<table *ngIf="serviceVoznje.listPolazaka">
+<table *ngIf="polasci">
     <tr>
         <td>Polasci:</td>
     </tr>

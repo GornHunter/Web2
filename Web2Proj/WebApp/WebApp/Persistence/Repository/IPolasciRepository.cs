@@ -10,6 +10,7 @@ namespace WebApp.Persistence.Repository
 {
     public interface IPolasciRepository : IRepository<Polasci, int>
     {
+        Polasci GetPolazak(Expression<Func<Polasci, bool>> predicate);
         List<Polasci> GetAllPolasci();
         List<Polasci> GetPolasci(Expression<Func<Polasci, bool>> predicate);
     }

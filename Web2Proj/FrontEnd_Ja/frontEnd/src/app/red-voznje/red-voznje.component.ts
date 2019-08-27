@@ -13,6 +13,7 @@ export class RedVoznjeComponent implements OnInit {
   tipVoznje: string;
 
   postojeLinije: boolean = false;
+  polasci: boolean = false;
 
   redoviVoznje: PolasciZahtev = {
     LinijaIme: "",
@@ -37,6 +38,7 @@ export class RedVoznjeComponent implements OnInit {
   }
 
   ispisPolazaka(){
+    this.polasci = true;
     this.serviceVoznje.getPolasci(this.redoviVoznje);
   }
 }

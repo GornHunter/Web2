@@ -73,6 +73,7 @@ namespace WebApp.Controllers
             return Ok(linije);
         }
 
+        [HttpDelete]
         [Route("DeleteLinija/{id}")]
         public IHttpActionResult DeleteLinija(int id)
         {
@@ -103,13 +104,27 @@ namespace WebApp.Controllers
         public IHttpActionResult AzurirajLiniju(Linija linija)
         {
             List<Linija> l = _unitOfWork.LinijaRep.GetLinije(x => x.Aktivan);
+            var lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);
+
             foreach (var item in l)
             {
-                if (linija.Naziv == item.Naziv)
+                if (linija.Naziv == item.Naziv && linija.Id == item.Id)
+                {
+                    lin.Naziv = linija.Naziv;
+                    lin.TipVoznje = linija.TipVoznje;
+
+                    _unitOfWork.Complete();
+
+                    return Ok("Linija je uspesno azurirana.");
+                }
+                else if(linija.Naziv == item.Naziv && linija.Id != item.Id)
+                {
                     return Ok("Linija sa tim imenom vec postoji!");
+                }
+                
             }
 
-            var lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);         
+            //lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);         
 
             lin.Naziv = linija.Naziv;
             lin.TipVoznje = linija.TipVoznje;

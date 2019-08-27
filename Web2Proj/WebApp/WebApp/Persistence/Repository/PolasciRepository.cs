@@ -17,6 +17,15 @@ namespace WebApp.Persistence.Repository
             _context = context as ApplicationDbContext;
         }
 
+        public Polasci GetPolazak(Expression<Func<Polasci, bool>> predicate)
+        {
+            if (_context.Polazki.Any(predicate))
+            {
+                return _context.Polazki.Where(predicate).First();
+            }
+            return null;
+        }
+
         public List<Polasci> GetAllPolasci()
         {
             var response = _context.Polazki.Include(t => t.Linija).ToList();

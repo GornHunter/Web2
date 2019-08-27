@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LinijaService } from '../linija.service';
 import { Linija, TipVoznje } from '../linija';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-prikaz-linija',
@@ -11,25 +10,26 @@ import { HttpClient } from '@angular/common/http';
 export class PrikazLinijaComponent implements OnInit {
 
   promena: boolean = false;
+  izbrisan: boolean = false;
   mes: string = "";
 
-  constructor(private linijeServis: LinijaService, private http: HttpClient) { }
+  constructor(private linijeServis: LinijaService) { }
 
   ngOnInit() {
     this.linijeServis.getLinija();
   }
 
-  ucitajLinije(){
-    this.linijeServis.getLinija();
-  }
-
   izbrisiLiniju(id: number): void{
+    this.izbrisan = true;
+    this.promena = false;
+    this.mes = "";
     this.linijeServis.izbrisiLiniju(id);
     this.linijeServis.getLinija();
   }
 
   izmeniLiniju(id: number){
     this.promena = true;
+    this.mes = "";
     this.linijeServis.getLinijaId(id);
   }
 

@@ -1,0 +1,69 @@
+<table class="cenovnik-form" width="30%" border="1">
+    <tbody>
+        <tr>
+            <th>Linija</th>
+            <th>Vreme</th>
+            <th>Opcije</th>
+        </tr>
+        <tr>
+            <td align="left">
+                <span class="lightblue-box-label" *ngFor="let polasci of servisPolazak.listPolazak">
+                    <label>{{polasci.Linija.Naziv}}</label>
+                </span>
+            </td>
+            <td align="left">
+                <span class="lightblue-box-label" *ngFor="let polasci of servisPolazak.listPolazak">
+                    <label>{{polasci.Vreme}}</label>
+                </span>
+            </td>
+            <td align="left">
+                <span class="lightblue-box-label" *ngFor="let polasci of servisPolazak.listPolazak">
+                    <button (click)="izmeniPolazak(polasci.Id)" class="btn btn-warning">Izmeni</button>
+                    <button (click)="izbrisiPolazak(polasci.Id)" class="btn btn-danger">Izbrisi</button>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="absolute" *ngIf="izbrisan">
+    <h1>{{servisPolazak.message}}</h1>
+</div>
+
+
+<table width="30%" *ngIf="izmena">
+        <tbody>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Vreme:</span>
+                </td>
+                <td align="left">
+                    <input [(ngModel)]="servisPolazak.polazakInfo.Vreme"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Tip dana:</span>
+                </td>
+                <td align="left">
+                   <select [(ngModel)]="servisPolazak.polazakInfo.TipDana" selected class="selectbox">
+                        <option value=0>RadniDan</option>
+                        <option value=1>Subota</option>
+                        <option value=2>Nedelja</option>
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>              
+                    <div align='right'>
+                        <button (click)="update(servisPolazak.polazakInfo)">Sacuvaj</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+</table>
+
+<div class="absolute" *ngIf="mes">
+    <h1>{{mes}}</h1>
+</div>

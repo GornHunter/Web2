@@ -44,12 +44,48 @@ namespace WebApp.Controllers
             return Ok(polasci);
         }
 
+        [Route("GetPolazakId/{id}")]
+        public IHttpActionResult GetPolazakId(int id)
+        {
+            var polazak = _unitOfWork.PolasciRep.GetPolazak(x => x.Id == id);
+
+            return Ok(polazak);
+        }
+
+        [Route("GetAllPolasci")]
+        public IHttpActionResult GetAllPolasci()
+        {
+            var polasci = _unitOfWork.PolasciRep.GetAllPolasci();
+
+            return Ok(polasci);
+        }
+
+        [HttpDelete]
         [Route("IzbrisiPolazak/{id}")]
         public IHttpActionResult IzbrisiPolazak(int id)
         {
+            var polazak = _unitOfWork.PolasciRep.GetPolazak(x => x.Id == id);
+            if (polazak == null)
+                return Ok("Ne postoji polazak sa datim id-jem.");
 
+            polazak.Aktivan = false;
 
-            return Ok();
+            _unitOfWork.Complete();
+
+            return Ok("Polazak je uspesno obrisan.");
+        }
+
+        [Route("AzurirajPolazak")]
+        public IHttpActionResult AzurirajPolazak(Polasci polazak)
+        {
+            var pol = _unitOfWork.PolasciRep.GetPolazak(x => x.Id == polazak.Id);
+
+            pol.Vreme = polazak.Vreme;
+            pol.TipDana = polazak.TipDana;
+
+            _unitOfWork.Complete();
+
+            return Ok("Polazak je uspesno azuriran.");
         }
     }
 }
