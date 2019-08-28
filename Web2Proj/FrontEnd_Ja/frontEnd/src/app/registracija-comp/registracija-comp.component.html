@@ -1,0 +1,90 @@
+<table class="cenovnik-form" width="25%">
+    <tbody>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Email:</span>
+            </td>
+            <td align="left">
+                <input class="form-control" [(ngModel)]="korisnikInfo.Email"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Ime:</span>
+            </td>
+            <td align="left">
+                <input class="form-control" [(ngModel)]="korisnikInfo.Ime"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Prezime:</span>
+            </td>
+            <td align="left">
+                <input class="form-control" [(ngModel)]="korisnikInfo.Prezime"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Lozinka:</span>
+            </td>
+            <td align="left">
+                <show-hide-password>
+                    <input type="password" [(ngModel)]="korisnikInfo.Lozinka"/>
+                </show-hide-password>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Potvrda lozinke:</span>
+            </td>
+            <td align="left">
+                <show-hide-password>
+                    <input type="password" [(ngModel)]="lozinka"/>
+                </show-hide-password>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">DatumRodjenja:</span>
+            </td>
+            <td align="left">
+                <input class="form-control" [(ngModel)]="korisnikInfo.DatumRodjenja"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Adresa:</span>
+            </td>
+            <td align="left">
+                <input class="form-control" [(ngModel)]="korisnikInfo.Adresa"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Tip Korisnika:</span>
+            </td>
+            <td align="left">
+               <select class="browser-default custom-select" [(ngModel)]="korisnikInfo.TipKorisnika">
+                    <option>Djak</option>
+                    <option>Penzioner</option>
+                    <option>RegularniPutnik</option>
+               </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>              
+                <div align='right'>
+                    <button class="btn btn-dark" *ngIf="korisnikInfo.Email && korisnikInfo.Ime && korisnikInfo.Prezime && korisnikInfo.Lozinka
+                     && lozinka && korisnikInfo.Adresa && korisnikInfo.DatumRodjenja && korisnikInfo.TipKorisnika
+                     && korisnikInfo.Lozinka==lozinka" type='button' (click)="addKorisnik(korisnikInfo)">Dodaj</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="absolute" *ngIf="dodat">
+    <h2>{{mes}}</h2>
+</div>

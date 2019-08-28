@@ -2,7 +2,9 @@
 <h1>{{title}}</h1>
 
 <nav>
-    <button type="button" class="btn btn-outline-dark" (click)="toggleEditor('kupovinaKarte')"><h3>Kupi kartu</h3></button>
+    <br>
+    <br>
+    <button class="btn btn-outline-dark" (click)="toggleEditor('kupovinaKarte')"><h3>Kupi kartu</h3></button>
     <app-kupovina-karte *ngIf="showKupovina"></app-kupovina-karte>
     <br>
     <br>
@@ -24,4 +26,15 @@
     <br>
     <button class="btn btn-outline-dark" (click)="toggleEditor('prikazPolazaka')"><h3>Prikazi sve polaske</h3></button>
     <app-prikaz-polazaka *ngIf="showPrikazPolazaka"></app-prikaz-polazaka>
+    <br>
+    <div align="right" class="fixed-top">
+        <div>
+            <button class="btn btn-outline-dark" (click)="toggleEditor('registrovanje')"><h3>Registracija</h3></button>
+            <app-registracija-comp *ngIf="showRegistrovanje"></app-registracija-comp>
+        </div>
+        <div>
+            <button class="btn btn-outline-dark" (click)="toggleEditor('logovanje')"><h3>Login</h3></button>
+            <app-logovanje-comp *ngIf="showLogovanje"></app-logovanje-comp>
+        </div>
+    </div>
 </nav>

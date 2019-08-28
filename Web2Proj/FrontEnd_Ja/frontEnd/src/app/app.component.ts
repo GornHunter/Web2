@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 
-export type EditorType = 'redVoznje' | 'kupovinaKarte' | 'linija' | 'polazak' | 'prikazLinija'| 'prikazPolazaka';
+export type EditorType = 'redVoznje' | 'kupovinaKarte' | 'linija' | 'polazak' | 'prikazLinija'| 'prikazPolazaka'
+                          | 'registrovanje' | 'logovanje';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,14 @@ export class AppComponent{
 
   get showPrikazPolazaka(){
     return this.editor === 'prikazPolazaka';
+  }
+
+  get showRegistrovanje(){
+    return this.editor === 'registrovanje';
+  }
+
+  get showLogovanje(){
+    return this.editor === 'logovanje';
   }
 
   toggleEditor(type: EditorType) {

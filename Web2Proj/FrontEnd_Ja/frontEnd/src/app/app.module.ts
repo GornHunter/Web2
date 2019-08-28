@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { LinijaCompComponent } from './linija-comp/linija-comp.component';
 import { PolazakCompComponent } from './polazak-comp/polazak-comp.component';
 import { PrikazLinijaComponent } from './prikaz-linija/prikaz-linija.component';
 import { PrikazPolazakaComponent } from './prikaz-polazaka/prikaz-polazaka.component';
+import { RegistracijaCompComponent } from './registracija-comp/registracija-comp.component';
+import { LogovanjeCompComponent } from './logovanje-comp/logovanje-comp.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,16 @@ import { PrikazPolazakaComponent } from './prikaz-polazaka/prikaz-polazaka.compo
     LinijaCompComponent,
     PolazakCompComponent,
     PrikazLinijaComponent,
-    PrikazPolazakaComponent
+    PrikazPolazakaComponent,
+    RegistracijaCompComponent,
+    LogovanjeCompComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ShowHidePasswordModule
   ],
   providers: [],
   bootstrap: [AppComponent]

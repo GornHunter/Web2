@@ -48,33 +48,64 @@ namespace WebApp.Controllers
         public IHttpActionResult PostKarta([FromBody] string karta)
         {
             TipKarte tip;
+            string trajanje;
 
+            #region Vremenska
             DateTime trenutno = DateTime.Now;
+            DateTime krajnjeVremenska = DateTime.Now.AddHours(1);
+            #endregion
 
-            DateTime krajnje = DateTime.Now.AddHours(1);
+            #region Dnevna
+            string krajnjeDnevna = DateTime.Today.ToShortDateString() + " 23:59:59";
+            #endregion
 
-            string vremenska = $"Vremenska karta je uspesno kupljena {trenutno} i vazi do {krajnje}";
+            #region Mesecna
+            int dan = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            int mesec = DateTime.Now.Month;
+            int godina = DateTime.Now.Year;
+            string krajnjeMesecna = $"{dan}/{mesec}/{godina} 23:59:59";
+            #endregion
+
+            #region Godisnja
+            int zadnjiDan = DateTime.DaysInMonth(DateTime.Now.Year, 12);
+            int godinaZadnje = DateTime.Now.Year;
+            string krajnjeGodisnja = $"{zadnjiDan}/12/{godinaZadnje} 23:59:59";
+            #endregion
+
+            #region Ispisi
+            string vremenska = $"Vremenska karta je uspesno kupljena {trenutno} i vazi do {krajnjeVremenska}";
+            string dnevna = $"Dnevna karta je uspesno kupljena {trenutno} i vazi do {krajnjeDnevna}";
+            string mesecna = $"Mesecna karta je uspesno kupljena {trenutno} i vazi do {krajnjeMesecna}";
+            string godisnja = $"Godisnja karta je uspesno kupljena {trenutno} i vazi do {krajnjeGodisnja}";
+            #endregion
 
             if (karta == "Vremenska")
             {
                 tip = TipKarte.Vremenska;
+                trajanje = krajnjeVremenska.ToString();
                 sendEmail(vremenska);
             }
             else if(karta == "Dnevna")
             {
                 tip = TipKarte.Dnevna;
+                trajanje = krajnjeDnevna;
+                sendEmail(dnevna);
             }
             else if(karta == "Mesecna")
             {
                 tip = TipKarte.Mesecna;
+                trajanje = krajnjeMesecna;
+                sendEmail(mesecna);
             }
             else
             {
                 tip = TipKarte.Godisnja;
+                trajanje = krajnjeGodisnja;
+                sendEmail(godisnja);
             }
 
             Karta novaKarta = new Karta(tip);
-            novaKarta.TrajanjeKarte = krajnje.ToString();
+            novaKarta.TrajanjeKarte = trajanje;
 
             _unitOfWork.KartaRep.Add(novaKarta);
             _unitOfWork.Complete();

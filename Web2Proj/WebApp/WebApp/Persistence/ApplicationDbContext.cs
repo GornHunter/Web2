@@ -14,6 +14,7 @@ namespace WebApp.Persistence
         public DbSet<Karta> Karte { get; set; }
         public DbSet<Linija> Linije { get; set; }
         public DbSet<Polasci> Polazki { get; set; }
+        public DbSet<Korisnik> Korisnici { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

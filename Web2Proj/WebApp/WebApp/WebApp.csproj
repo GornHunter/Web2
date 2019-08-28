@@ -263,27 +263,32 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908241102107_PrviDeo.cs" />
-    <Compile Include="Migrations\201908241102107_PrviDeo.Designer.cs">
-      <DependentUpon>201908241102107_PrviDeo.cs</DependentUpon>
+    <Compile Include="Migrations\201908281417566_PrvaMigracija.cs" />
+    <Compile Include="Migrations\201908281417566_PrvaMigracija.Designer.cs">
+      <DependentUpon>201908281417566_PrvaMigracija.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Karta.cs" />
+    <Compile Include="Models\Korisnik.cs" />
     <Compile Include="Models\Linija.cs" />
+    <Compile Include="Models\LogovanjeZahtev.cs" />
     <Compile Include="Models\Polasci.cs" />
     <Compile Include="Models\PolasciZahtev.cs" />
     <Compile Include="Models\TipDana.cs" />
     <Compile Include="Models\TipKarte.cs" />
+    <Compile Include="Models\TipKorisnika.cs" />
     <Compile Include="Models\TipVoznje.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\IKartaRepository.cs" />
+    <Compile Include="Persistence\Repository\IKorisnikRepository.cs" />
     <Compile Include="Persistence\Repository\ILinijaRepository.cs" />
     <Compile Include="Persistence\Repository\IPolasciRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
     <Compile Include="Persistence\Repository\KartaRepository.cs" />
+    <Compile Include="Persistence\Repository\KorisnikRepository.cs" />
     <Compile Include="Persistence\Repository\LinijaRepository.cs" />
     <Compile Include="Persistence\Repository\PolasciRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
@@ -390,8 +395,8 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908241102107_PrviDeo.resx">
-      <DependentUpon>201908241102107_PrviDeo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908281417566_PrvaMigracija.resx">
+      <DependentUpon>201908281417566_PrvaMigracija.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

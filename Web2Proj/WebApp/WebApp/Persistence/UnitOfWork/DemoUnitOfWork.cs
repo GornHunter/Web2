@@ -20,6 +20,9 @@ namespace WebApp.Persistence.UnitOfWork
 
         [Dependency]
         public IPolasciRepository PolasciRep { get; set; }
+
+        [Dependency]
+        public IKorisnikRepository KorisnikRep { get; set; }
       
         public DemoUnitOfWork(DbContext context)
         {

@@ -1,0 +1,34 @@
+<table class="cenovnik-form" width="25%">
+        <tbody>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Email:</span>
+                </td>
+                <td align="left">
+                    <input class="form-control" [(ngModel)]="log.Email"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Lozinka:</span>
+                </td>
+                <td align="left">
+                    <show-hide-password>
+                        <input type="password" [(ngModel)]="log.Lozinka"/>
+                    </show-hide-password>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>              
+                    <div align='right'>
+                        <button class="btn btn-dark" *ngIf="log.Email && log.Lozinka" type='button' (click)="getKorisnik(log)">Uloguj se</button>
+                    </div>
+                </td>
+            </tr>  
+        </tbody>
+</table>
+
+<div class="absolute" *ngIf="ulogovan">
+    <h2>{{servis.log.Poruka}}</h2>
+</div>
