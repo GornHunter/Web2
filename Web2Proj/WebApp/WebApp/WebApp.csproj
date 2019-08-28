@@ -254,6 +254,7 @@
     <Compile Include="Controllers\KupovinaKarteController.cs" />
     <Compile Include="Controllers\LinijaController.cs" />
     <Compile Include="Controllers\PolasciController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
