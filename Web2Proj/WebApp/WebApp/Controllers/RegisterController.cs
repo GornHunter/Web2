@@ -66,5 +66,12 @@ namespace WebApp.Controllers
 
             return Ok(new LogovanjeZahtev("Korisnik ne postoji u bazi.", false, false));
         }
+
+        [Route("Cenovnik")]
+        public IHttpActionResult Cenovnik()
+        {
+            return Ok();
+        }
+
     }
 }

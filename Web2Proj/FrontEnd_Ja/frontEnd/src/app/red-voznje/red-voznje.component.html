@@ -33,7 +33,7 @@
             </td>
             <td align="left" valign="top">
                 <div>
-                    <select [(ngModel)]="redoviVoznje.LinijaIme" class="selectbox" multiple>
+                    <select [(ngModel)]="redoviVoznje.LinijaIme" class="selectbox">
                         <option *ngFor="let linije of serviceVoznje.listaLinija">
                             {{linije.Naziv}}
                         </option>
