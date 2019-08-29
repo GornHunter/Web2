@@ -14,7 +14,8 @@ export class RegistracijaService {
   log: LogovanjeZahtev = {
     Poruka: "",
     LogovanKorisnik: false,
-    LogovanAdmin: false
+    LogovanAdmin: false,
+    KorisnikDetalji: new Korisnik
   }
 
   constructor(private http: HttpClient) { }
@@ -25,5 +26,9 @@ export class RegistracijaService {
 
   getKorisnik(log: Logovanje){
     this.http.get(this.registracijaUrl+'Logovanje?email='+log.Email+'&lozinka='+log.Lozinka).toPromise().then((data:LogovanjeZahtev) => this.log = data as LogovanjeZahtev);
+  }
+
+  updateKorisnik(korisnik: Korisnik){
+    return this.http.post(this.registracijaUrl+'AzurirajKorisnika', korisnik);
   }
 }

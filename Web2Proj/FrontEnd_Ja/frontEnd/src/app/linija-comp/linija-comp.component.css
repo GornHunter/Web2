@@ -18,4 +18,6 @@
 div.absolute
 {
     position : absolute;
+    left: 38%;
+    top: 65%
 }

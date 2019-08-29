@@ -13,13 +13,16 @@ namespace WebApp.Models
 
         public bool LogovanAdmin { get; set; } = false;
 
+        public Korisnik KorisnikDetalji { get; set; }
+
         public LogovanjeZahtev() { }
 
-        public LogovanjeZahtev(string poruka, bool logovanKorisnik, bool logovanAdmin)
+        public LogovanjeZahtev(string poruka, bool logovanKorisnik, bool logovanAdmin, Korisnik korisnikDetalji)
         {
             Poruka = poruka;
             LogovanKorisnik = logovanKorisnik;
             LogovanAdmin = logovanAdmin;
+            KorisnikDetalji = korisnikDetalji;
         }
     }
 }

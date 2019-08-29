@@ -1,7 +1,9 @@
 import { Component} from '@angular/core';
+import { RegistracijaService } from './registracija.service';
+import { LogovanjeZahtev } from './logovanjeZahtev';
 
 export type EditorType = 'redVoznje' | 'kupovinaKarte' | 'linija' | 'polazak' | 'prikazLinija'| 'prikazPolazaka'
-                          | 'registrovanje' | 'logovanje';
+                          | 'registrovanje' | 'logovanje' | 'izlogovanje' | 'detalji';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,8 @@ export class AppComponent{
   title = "Buss App";
 
   editor: EditorType;
+
+  constructor(private servis: RegistracijaService) {}
 
   get showRedVoznje() {
     return this.editor === 'redVoznje';
@@ -43,6 +47,14 @@ export class AppComponent{
 
   get showLogovanje(){
     return this.editor === 'logovanje';
+  }
+
+  get showIzlogovanje(){
+    return this.editor === 'izlogovanje';
+  }
+
+  get showDetalji(){
+    return this.editor === 'detalji';
   }
 
   toggleEditor(type: EditorType) {

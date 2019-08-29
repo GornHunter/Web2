@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LinijaService } from '../linija.service';
 import { Linija, TipVoznje } from '../linija';
+import { RegistracijaService } from '../registracija.service';
 
 @Component({
   selector: 'app-prikaz-linija',
@@ -13,7 +14,7 @@ export class PrikazLinijaComponent implements OnInit {
   izbrisan: boolean = false;
   mes: string = "";
 
-  constructor(private linijeServis: LinijaService) { }
+  constructor(private linijeServis: LinijaService, private servis: RegistracijaService) { }
 
   ngOnInit() {
     this.linijeServis.getLinija();

@@ -4,37 +4,47 @@
 <nav>
     <br>
     <br>
-    <button class="btn btn-outline-dark" (click)="toggleEditor('kupovinaKarte')"><h3>Kupi kartu</h3></button>
+    <button *ngIf="servis.log.LogovanAdmin==false" class="btn btn-outline-dark" (click)="toggleEditor('kupovinaKarte')"><h3>Kupi kartu</h3></button>
     <app-kupovina-karte *ngIf="showKupovina"></app-kupovina-karte>
     <br>
     <br>
-    <button class="btn btn-outline-dark"class="btn btn-outline-dark" (click)="toggleEditor('redVoznje')"><h3>Prikazi red voznje</h3></button>
+    <button *ngIf="servis.log.LogovanAdmin==false" class="btn btn-outline-dark"class="btn btn-outline-dark" (click)="toggleEditor('redVoznje')"><h3>Prikazi red voznje</h3></button>
     <app-red-voznje *ngIf="showRedVoznje"></app-red-voznje>
     <br>
     <br>
-    <button class="btn btn-outline-dark" (click)="toggleEditor('linija')"><h3>Dodaj liniju</h3></button>
-    <app-linija-comp *ngIf="showLinija"></app-linija-comp>
-    <br>
-    <br>
-    <button class="btn btn-outline-dark" (click)="toggleEditor('polazak')"><h3>Dodaj polazak</h3></button>
-    <app-polazak-comp *ngIf="showPolazak"></app-polazak-comp>
-    <br>
-    <br>
-    <button class="btn btn-outline-dark" (click)="toggleEditor('prikazLinija')"><h3>Prikazi sve linije</h3></button>
+    <button *ngIf="servis.log.LogovanAdmin==false || servis.log.LogovanKorisnik==false" class="btn btn-outline-dark" (click)="toggleEditor('prikazLinija')"><h3>Prikazi sve linije</h3></button>
     <app-prikaz-linija *ngIf="showPrikazLinija"></app-prikaz-linija>
     <br>
     <br>
-    <button class="btn btn-outline-dark" (click)="toggleEditor('prikazPolazaka')"><h3>Prikazi sve polaske</h3></button>
+    <button *ngIf="servis.log.LogovanAdmin==false || servis.log.LogovanKorisnik==false" class="btn btn-outline-dark" (click)="toggleEditor('prikazPolazaka')"><h3>Prikazi sve polaske</h3></button>
     <app-prikaz-polazaka *ngIf="showPrikazPolazaka"></app-prikaz-polazaka>
     <br>
-    <div align="right" class="fixed-top">
+    <br>
+    <button *ngIf="servis.log.LogovanAdmin" class="btn btn-outline-dark" (click)="toggleEditor('linija')"><h3>Dodaj liniju</h3></button>
+    <app-linija-comp *ngIf="showLinija"></app-linija-comp>
+    <br>
+    <br>
+    <button *ngIf="servis.log.LogovanAdmin" class="btn btn-outline-dark" (click)="toggleEditor('polazak')"><h3>Dodaj polazak</h3></button>
+    <app-polazak-comp *ngIf="showPolazak"></app-polazak-comp>
+    <br>
+    <div *ngIf="servis.log.LogovanAdmin==false && servis.log.LogovanKorisnik==false" align="right" class="fixed-top">
         <div>
             <button class="btn btn-outline-dark" (click)="toggleEditor('registrovanje')"><h3>Registracija</h3></button>
             <app-registracija-comp *ngIf="showRegistrovanje"></app-registracija-comp>
         </div>
         <div>
-            <button class="btn btn-outline-dark" (click)="toggleEditor('logovanje')"><h3>Login</h3></button>
+            <button class="btn btn-outline-dark" (click)="toggleEditor('logovanje')"><h3>Loguj se</h3></button>
             <app-logovanje-comp *ngIf="showLogovanje"></app-logovanje-comp>
+        </div>
+    </div>
+    <div align="right" class="fixed-top">
+        <div *ngIf="servis.log.LogovanAdmin || servis.log.LogovanKorisnik">
+            <button class="btn btn-outline-dark" (click)="toggleEditor('izlogovanje')"><h3>Izloguj se</h3></button>
+            <app-logout *ngIf="showIzlogovanje"></app-logout>
+        </div>
+        <div *ngIf="servis.log.LogovanKorisnik">
+            <button class="btn btn-outline-dark" (click)="toggleEditor('detalji')"><h3>Detalji</h3></button>
+            <app-detalji-korisnik *ngIf="showDetalji"></app-detalji-korisnik>
         </div>
     </div>
 </nav>

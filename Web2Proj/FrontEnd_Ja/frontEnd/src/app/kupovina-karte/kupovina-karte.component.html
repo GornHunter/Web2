@@ -1,4 +1,32 @@
-<div class="absolute">
+<table class="cenovnik-form" width="30%">
+        <tbody>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Tip voznje:</span>
+                </td>
+                <td align="left">
+                   <select class="browser-default custom-select" [(ngModel)]="karta">
+                        <option selected></option>
+                        <option>Vremenska</option>
+                        <option *ngIf="servis.log.LogovanKorisnik">Dnevna</option>
+                        <option *ngIf="servis.log.LogovanKorisnik">Mesecna</option>
+                        <option *ngIf="servis.log.LogovanKorisnik">Godisnja</option>
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>              
+                    <div align='center'>
+                        <button *ngIf="karta" class="btn btn-dark" type="button" (click)="addKartaNeregistrovani(karta)">Kupi kartu</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+</table>
+
+
+<div class="absolute" *ngIf="kupljena">
     <h1>{{poslata}}</h1>
 </div>
 

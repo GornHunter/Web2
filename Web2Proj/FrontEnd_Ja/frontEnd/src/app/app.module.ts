@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,8 @@ import { PrikazLinijaComponent } from './prikaz-linija/prikaz-linija.component';
 import { PrikazPolazakaComponent } from './prikaz-polazaka/prikaz-polazaka.component';
 import { RegistracijaCompComponent } from './registracija-comp/registracija-comp.component';
 import { LogovanjeCompComponent } from './logovanje-comp/logovanje-comp.component';
+import { LogoutComponent } from './logout/logout.component';
+import { DetaljiKorisnikComponent } from './detalji-korisnik/detalji-korisnik.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,17 @@ import { LogovanjeCompComponent } from './logovanje-comp/logovanje-comp.componen
     PrikazLinijaComponent,
     PrikazPolazakaComponent,
     RegistracijaCompComponent,
-    LogovanjeCompComponent
+    LogovanjeCompComponent,
+    LogoutComponent,
+    DetaljiKorisnikComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ShowHidePasswordModule
+    ShowHidePasswordModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

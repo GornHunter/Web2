@@ -1,0 +1,74 @@
+<table class="cenovnik-form" width="25%">
+        <tbody>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Email:</span>
+                </td>
+                <td align="left">
+                    <input class="form-control" [(ngModel)]="servis.log.KorisnikDetalji.Email"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Ime:</span>
+                </td>
+                <td align="left">
+                    <input class="form-control" [(ngModel)]="servis.log.KorisnikDetalji.Ime"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Prezime:</span>
+                </td>
+                <td align="left">
+                    <input class="form-control" [(ngModel)]="servis.log.KorisnikDetalji.Prezime"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Lozinka:</span>
+                </td>
+                <td align="left">
+                    <show-hide-password>
+                        <input type="password" [(ngModel)]="servis.log.KorisnikDetalji.Lozinka"/>
+                    </show-hide-password>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">DatumRodjenja:</span>
+                </td>
+                <td align="left">
+                    <input class="form-control" [(ngModel)]="servis.log.KorisnikDetalji.DatumRodjenja"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Adresa:</span>
+                </td>
+                <td align="left">
+                    <input class="form-control" [(ngModel)]="servis.log.KorisnikDetalji.Adresa"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Tip Korisnika:</span>
+                </td>
+                <td align="left">
+                   <input readonly class="form-control" [(ngModel)]="tip"/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>              
+                    <div align='right'>
+                        <button class="btn btn-dark" type='button' (click)="updateKorisnik(servis.log.KorisnikDetalji)">Sacuvaj</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+</table>
+
+<div class="absolute" *ngIf="sacuvan">
+    <h2>{{mes}}</h2>
+</div>

@@ -5,7 +5,7 @@
                 <span class="lightblue-box-label">Tip Dana:</span>
             </td>
             <td align="left">
-                <select [(ngModel)]="tipDana" class="selectbox">
+                <select class="browser-default custom-select" [(ngModel)]="tipDana">
                     <option value=0>RadniDan</option>
                     <option value=1>Subota</option>
                     <option value=2>Nedelja</option>
@@ -17,7 +17,8 @@
                 <span class="lightblue-box-label">Linija:</span>
             </td>
             <td align="left">
-                <select [(ngModel)]="naziv" class="selectbox">
+                <select class="browser-default custom-select" [(ngModel)]="naziv">
+                    <option selected></option>
                     <option *ngFor="let p of linijaServis.listaLinija" value={{p.Naziv}}>{{p.Naziv}}</option>
                 </select>
              </td>
@@ -27,14 +28,14 @@
                 <span class="lightblue-box-label">Vreme:</span>
             </td>
             <td align="left">
-                <input [(ngModel)]="polazakInfo.Vreme"/>
+                <input class="form-control" [(ngModel)]="polazakInfo.Vreme"/>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>              
                 <div align='right'>
-                    <button type='button' (click)="addPolazak()">Dodaj</button>
+                    <button *ngIf="tipDana && naziv && polazakInfo.Vreme" class="btn btn-dark" type='button' (click)="addPolazak()">Dodaj</button>
                 </div>
             </td>
         </tr>

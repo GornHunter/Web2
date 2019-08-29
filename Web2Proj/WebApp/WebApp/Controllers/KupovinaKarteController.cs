@@ -110,7 +110,7 @@ namespace WebApp.Controllers
             _unitOfWork.KartaRep.Add(novaKarta);
             _unitOfWork.Complete();
 
-            return Ok();
+            return Ok("Karta je uspesno kupljena.");
         }
 
         private void sendEmail(string body)

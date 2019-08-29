@@ -1,16 +1,16 @@
 <table class="cenovnik-form" width="30%" border="1">
     <tbody>
-        <tr>
+        <tr align="center">
             <th>Naziv</th>
-            <th>Opcije</th>
+            <th *ngIf="servis.log.LogovanAdmin">Opcije</th>
         </tr>
         <tr>
-            <td align="left">
+            <td align="center">
                 <span class="lightblue-box-label" *ngFor="let linije of linijeServis.listaLinija">
                     <label>{{linije.Naziv}}</label>
                 </span>
             </td>
-            <td align="left">
+            <td align="center" *ngIf="servis.log.LogovanAdmin">
                 <span class="lightblue-box-label" *ngFor="let linije of linijeServis.listaLinija">
                     <button (click)="izmeniLiniju(linije.Id)" class="btn btn-warning">Izmeni</button>
                     <button (click)="izbrisiLiniju(linije.Id)" class="btn btn-danger">Izbrisi</button>
@@ -32,7 +32,7 @@
                 <span class="lightblue-box-label">Naziv:</span>
             </td>
             <td align="left">
-                <input [(ngModel)]="linijeServis.linijaInfo.Naziv"/>
+                <input class="form-control" [(ngModel)]="linijeServis.linijaInfo.Naziv"/>
             </td>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
                 <span class="lightblue-box-label">Tip voznje:</span>
             </td>
             <td align="left">
-               <select [(ngModel)]="linijeServis.linijaInfo.TipVoznje" selected class="selectbox">
+               <select class="browser-default custom-select" [(ngModel)]="linijeServis.linijaInfo.TipVoznje" selected>
                     <option value=0>Gradski</option>
                     <option value=1>Prigradski</option>
                </select>
@@ -50,7 +50,7 @@
             <td></td>
             <td>              
                 <div align='right'>
-                    <button (click)="update(linijeServis.linijaInfo)">Sacuvaj</button>
+                    <button class="btn btn-dark" (click)="update(linijeServis.linijaInfo)">Sacuvaj</button>
                 </div>
             </td>
         </tr>

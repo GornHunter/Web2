@@ -14,3 +14,9 @@
     margin-top: -1%;
     margin-left: 35%;
 }
+
+.absolute{
+    position: absolute;
+    left: 45%;
+    top: 60%
+}

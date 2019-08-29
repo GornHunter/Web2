@@ -5,7 +5,7 @@
                 <span class="lightblue-box-label">Naziv:</span>
             </td>
             <td align="left">
-                <input [(ngModel)]="linijaInfo.Naziv"/>
+                <input class="form-control" [(ngModel)]="linijaInfo.Naziv"/>
             </td>
         </tr>
         <tr>
@@ -13,7 +13,8 @@
                 <span class="lightblue-box-label">Tip voznje:</span>
             </td>
             <td align="left">
-               <select [(ngModel)]="linijaInfo.TipVoznje" class="selectbox">
+               <select class="browser-default custom-select" [(ngModel)]="linijaInfo.TipVoznje">
+                    <option selected></option>
                     <option>Gradski</option>
                     <option>Prigradski</option>
                </select>
@@ -23,7 +24,7 @@
             <td></td>
             <td>              
                 <div align='right'>
-                    <button type='button' (click)="addLinija()">Dodaj</button>
+                    <button *ngIf="linijaInfo.Naziv && linijaInfo.TipVoznje" class="btn btn-dark" type='button' (click)="addLinija()">Dodaj</button>
                 </div>
             </td>
         </tr>

@@ -17,8 +17,7 @@ export class KupiKartuService {
 
   constructor(private http: HttpClient) { }
 
-  addKartaNeregistrovani (){
-    let xy = "Vremenska";
-    return this.http.post(this.kartaUrl+'/PostKarta', '"' + xy + '"', httpOptions);
+  addKartaNeregistrovani(karta: string){
+    return this.http.post(this.kartaUrl+'/PostKarta', '"' + karta + '"', httpOptions);
   }
 }

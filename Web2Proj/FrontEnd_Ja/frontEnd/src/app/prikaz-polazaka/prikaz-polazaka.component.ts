@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PolasciService } from '../polasci.service';
 import { Polasci } from '../polasci';
+import { RegistracijaService } from '../registracija.service';
 
 @Component({
   selector: 'app-prikaz-polazaka',
@@ -13,7 +14,7 @@ export class PrikazPolazakaComponent implements OnInit {
   izbrisan: boolean = false;
   izmena: boolean = false;
 
-  constructor(private servisPolazak: PolasciService) { }
+  constructor(private servisPolazak: PolasciService, private servis: RegistracijaService) { }
 
   ngOnInit() {
     this.servisPolazak.getPolazak();
