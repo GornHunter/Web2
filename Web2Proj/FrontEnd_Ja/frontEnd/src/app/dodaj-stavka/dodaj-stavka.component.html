@@ -1,0 +1,52 @@
+<table class="cenovnik-form" width="30%">
+    <tbody>
+        <tr>
+            <td width="100px">
+                <span class="lightblue-box-label">Tip Karte:</span>
+            </td>
+            <td align="left">
+                <select class="browser-default custom-select" [(ngModel)]="cenovnik.TipKarte">
+                    <option selected></option>
+                    <option>Vremenska</option>
+                    <option>Dnevna</option>
+                    <option>Mesecna</option>
+                    <option>Godisnja</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="lightblue-box-label">Tip Korisnika:</span>
+            </td>
+            <td align="left">
+                <select class="browser-default custom-select" [(ngModel)]="cenovnik.TipKorisnika">
+                    <option selected></option>
+                    <option>Djak</option>
+                    <option>Penzioner</option>
+                    <option>RegularniPutnik</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="lightblue-box-label">Cena:</span>
+            </td>
+            <td align="left">
+                <input class="form-control" [(ngModel)]="cenovnik.Cena"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>              
+                <div align='right'>
+                    <button *ngIf="cenovnik.TipKarte && cenovnik.TipKorisnika && cenovnik.Cena" class="btn btn-dark" type="button" (click)="addStavka(cenovnik)">Dodaj stavku</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="absolute" *ngIf="dodat">
+    <h2>{{mes}}</h2>
+</div>

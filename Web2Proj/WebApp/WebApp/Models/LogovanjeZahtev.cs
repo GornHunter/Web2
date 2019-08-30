@@ -9,6 +9,8 @@ namespace WebApp.Models
     {
         public string Poruka { get; set; }
 
+        public bool Neregistrovan { get; set; } = true;
+
         public bool LogovanKorisnik { get; set; } = false;
 
         public bool LogovanAdmin { get; set; } = false;
@@ -17,9 +19,10 @@ namespace WebApp.Models
 
         public LogovanjeZahtev() { }
 
-        public LogovanjeZahtev(string poruka, bool logovanKorisnik, bool logovanAdmin, Korisnik korisnikDetalji)
+        public LogovanjeZahtev(string poruka, bool neregistrovan, bool logovanKorisnik, bool logovanAdmin, Korisnik korisnikDetalji)
         {
             Poruka = poruka;
+            Neregistrovan = neregistrovan;
             LogovanKorisnik = logovanKorisnik;
             LogovanAdmin = logovanAdmin;
             KorisnikDetalji = korisnikDetalji;

@@ -1,5 +1,8 @@
 export class Karta {
-    Id: number;
-    TipKarte: string;
+    TipKarte: TipKarte;
     TrajanjeKarte: string;
+}
+
+export enum TipKarte{
+    Vremenska, Dnevna, Mesecna, Godisnja
 }

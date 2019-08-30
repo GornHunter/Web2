@@ -1,31 +1,30 @@
-<table class="cenovnik-form" width="30%" border="1">
-    <tbody>
-        <tr align="center">
-            <th>Naziv</th>
-            <th *ngIf="servis.log.LogovanAdmin">Opcije</th>
-        </tr>
-        <tr>
-            <td align="center">
-                <span class="lightblue-box-label" *ngFor="let linije of linijeServis.listaLinija">
-                    <label>{{linije.Naziv}}</label>
-                </span>
-            </td>
-            <td align="center" *ngIf="servis.log.LogovanAdmin">
-                <span class="lightblue-box-label" *ngFor="let linije of linijeServis.listaLinija">
-                    <button (click)="izmeniLiniju(linije.Id)" class="btn btn-warning">Izmeni</button>
-                    <button (click)="izbrisiLiniju(linije.Id)" class="btn btn-danger">Izbrisi</button>
-                </span>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <table *ngIf="izmenaIzabrana==false" class="cenovnik-form" width="30%" border="1">
+            <tbody>
+                <tr align="center">
+                    <th>Naziv</th>
+                    <th *ngIf="servis.log.LogovanAdmin">Opcije</th>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <span class="lightblue-box-label" *ngFor="let linije of linijeServis.listaLinija">
+                            <label>{{linije.Naziv}}</label>
+                        </span>
+                    </td>
+                    <td align="center" *ngIf="servis.log.LogovanAdmin">
+                        <span class="lightblue-box-label" *ngFor="let linije of linijeServis.listaLinija">
+                            <button (click)="izmeniLiniju(linije.Id)" class="btn btn-warning">Izmeni</button>
+                            <button (click)="izbrisiLiniju(linije.Id)" class="btn btn-danger">Izbrisi</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-<div class="absolute" *ngIf="izbrisan">
-    <h1>{{linijeServis.message}}</h1>
-</div>
+        <div class="absolute" *ngIf="izbrisan">
+            <h2>{{linijeServis.message}}</h2>
+        </div>
 
-
-<table width="30%" *ngIf="promena">
+<table class="cenovnik-form" width="30%" *ngIf="promena">
     <tbody>
         <tr>
             <td width="100px">
@@ -57,6 +56,6 @@
     </tbody>
 </table>
 
-<div class="absolute" *ngIf="mes">
-    <h1>{{mes}}</h1>
+<div class="pos" *ngIf="mes">
+    <h2>{{mes}}</h2>
 </div>

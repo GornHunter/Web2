@@ -10,13 +10,23 @@ import { RegistracijaService } from '../registracija.service';
 })
 export class KupovinaKarteComponent implements OnInit {
 
-  private poslata = "";
   karta: string = "";
+  private poslata = "";
   kupljena: boolean = false;
 
   constructor(private kartaServis: KupiKartuService, private servis: RegistracijaService) { }
 
   ngOnInit() {
+    this.check();
+  }
+
+  check(): boolean{
+    if(this.servis.log.KorisnikDetalji.Slika == ""){
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
   addKartaNeregistrovani(karta: string): void {

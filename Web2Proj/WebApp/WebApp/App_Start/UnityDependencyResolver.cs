@@ -74,6 +74,7 @@ namespace WebApp.App_Start
             container.RegisterType<ILinijaRepository, LinijaRepository>();
             container.RegisterType<IPolasciRepository, PolasciRepository>();
             container.RegisterType<IKorisnikRepository, KorisnikRepository>();
+            container.RegisterType<ICenovnikRepository, CenovnikRepository>();
         }
 
         public void Dispose()

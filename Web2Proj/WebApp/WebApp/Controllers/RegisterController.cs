@@ -54,18 +54,18 @@ namespace WebApp.Controllers
             var korisnik = _unitOfWork.KorisnikRep.GetKorisnik(x => x.Email == email && x.Lozinka == lozinka);
 
             if (kor == null)
-                return Ok(new LogovanjeZahtev("Baza je prazna.", false, false, null));
+                return Ok(new LogovanjeZahtev("Baza je prazna.", true, false, false, null));
 
             if (email == "admin" && lozinka == "admin123")
-                return Ok(new LogovanjeZahtev("Ulogovani ste kao Admin.", false, true, null));
+                return Ok(new LogovanjeZahtev("Ulogovani ste kao Admin.", false, false, true, null));
 
             foreach (var item in kor)
             {
                 if(item.Email == email && item.Lozinka == lozinka)
-                    return Ok(new LogovanjeZahtev("", true, false, korisnik));
+                    return Ok(new LogovanjeZahtev("", false, true, false, korisnik));
             }
 
-            return Ok(new LogovanjeZahtev("Korisnik ne postoji u bazi.", false, false, null));
+            return Ok(new LogovanjeZahtev("Korisnik ne postoji u bazi.", true, false, false, null));
         }
 
         [Route("AzurirajKorisnika")]
@@ -84,12 +84,13 @@ namespace WebApp.Controllers
                     kor.Lozinka = korisnik.Lozinka;
                     kor.DatumRodjenja = korisnik.DatumRodjenja;
                     kor.Adresa = korisnik.Adresa;
+                    kor.Slika = korisnik.Slika;
 
                     _unitOfWork.Complete();
 
                     return Ok("Uspesno ste azurirali profil.");
                 }
-                else if (item.Email == korisnik.Email || item.Lozinka == korisnik.Lozinka)
+                else if ((item.Email == korisnik.Email || item.Lozinka == korisnik.Lozinka) && item.Id != korisnik.Id)
                     return Ok("Korisnik vec postoji.");
             }
 
@@ -99,17 +100,72 @@ namespace WebApp.Controllers
             kor.Lozinka = korisnik.Lozinka;
             kor.DatumRodjenja = korisnik.DatumRodjenja;
             kor.Adresa = korisnik.Adresa;
+            kor.Slika = korisnik.Slika;
 
             _unitOfWork.Complete();
 
             return Ok("Uspesno ste azurirali profil.");
         }
 
-        [Route("Cenovnik")]
-        public IHttpActionResult Cenovnik()
+        [Route("DodajStavku")]
+        public IHttpActionResult DodajStavku(Cenovnik cenovnik)
         {
-            return Ok();
+            var cen = _unitOfWork.CenovnikRep.GetAllStavke();
+            if(cen == null)
+            {
+                _unitOfWork.CenovnikRep.Add(cenovnik);
+                _unitOfWork.Complete();
+
+                return Ok("Uspesno je dodata stavka u cenovnik.");
+            }
+
+            foreach(var item in cen)
+            {
+                if (item.TipKarte == cenovnik.TipKarte && item.TipKorisnika == cenovnik.TipKorisnika)
+                    return Ok("Vec postoji cena za dati tip karte i tip korisnika.");
+            }
+
+            _unitOfWork.CenovnikRep.Add(cenovnik);
+            _unitOfWork.Complete();
+
+            return Ok("Uspesno je dodata stavka u cenovnik.");
         }
 
+        [Route("GetStavke")]
+        public IHttpActionResult GetStavke()
+        {
+            var cen = _unitOfWork.CenovnikRep.GetAllStavke();
+
+            return Ok(cen);
+        }
+
+        [HttpGet]
+        [Route("GetSpecificnaStavka")]
+        public IHttpActionResult GetSpecificnaStavka(TipKarte tipKarte, TipKorisnika tipKorisnika)
+        {
+            var cen = _unitOfWork.CenovnikRep.GetStavka(x => x.TipKarte == tipKarte && x.TipKorisnika == tipKorisnika);
+
+            return Ok(cen.Cena);
+        }
+
+        [Route("GetStavkaId/{id}")]
+        public IHttpActionResult GetStavkaId(int id)
+        {
+            var cen = _unitOfWork.CenovnikRep.GetStavka(x => x.Id == id);
+
+            return Ok(cen);
+        }
+
+        [Route("AzurirajStavku")]
+        public IHttpActionResult AzurirajStavku(Cenovnik cenovnik)
+        {
+            var cen = _unitOfWork.CenovnikRep.GetStavka(x => x.Id == cenovnik.Id);
+
+            cen.Cena = cenovnik.Cena;
+
+            _unitOfWork.Complete();
+
+            return Ok("Uspesno azurirana cena stavke.");
+        }
     }
 }

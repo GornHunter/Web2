@@ -1,4 +1,4 @@
-<table class="cenovnik-form" width="30%">
+<table *ngIf="check() || servis.log.Neregistrovan || servis.log.KorisnikDetalji.TipKorisnika==2" class="cenovnik-form" width="30%">
         <tbody>
             <tr>
                 <td width="100px">
@@ -27,6 +27,5 @@
 
 
 <div class="absolute" *ngIf="kupljena">
-    <h1>{{poslata}}</h1>
+    <h2>{{poslata}}</h2>
 </div>
-

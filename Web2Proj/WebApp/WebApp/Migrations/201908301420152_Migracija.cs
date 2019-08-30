@@ -3,10 +3,21 @@ namespace WebApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class PrvaMigracija : DbMigration
+    public partial class Migracija : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Cenovniks",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        TipKarte = c.Int(nullable: false),
+                        TipKorisnika = c.Int(nullable: false),
+                        Cena = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Kartas",
                 c => new
@@ -29,6 +40,7 @@ namespace WebApp.Migrations
                         DatumRodjenja = c.String(),
                         Adresa = c.String(),
                         TipKorisnika = c.Int(nullable: false),
+                        Slika = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -67,6 +79,7 @@ namespace WebApp.Migrations
             DropTable("dbo.Linijas");
             DropTable("dbo.Korisniks");
             DropTable("dbo.Kartas");
+            DropTable("dbo.Cenovniks");
         }
     }
 }

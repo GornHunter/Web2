@@ -26,5 +26,9 @@ namespace WebApp.Models
         public string Adresa { get; set; }
 
         public TipKorisnika TipKorisnika { get; set; }
+
+        public string Slika { get; set; }
+
+        public Korisnik() { }
     }
 }

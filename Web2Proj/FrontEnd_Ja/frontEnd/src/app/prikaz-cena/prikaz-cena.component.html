@@ -1,0 +1,51 @@
+<table class="cenovnik-form" width="30%">
+        <tbody>
+            <tr>
+                <td width="100px">
+                    <span class="lightblue-box-label">Tip Voznje:</span>
+                </td>
+                <td align="left">
+                    <select class="browser-default custom-select" [(ngModel)]="cenovnik.TipKarte">
+                        <option selected></option>
+                        <option>Vremenska</option>
+                        <option>Dnevna</option>
+                        <option>Mesecna</option>
+                        <option>Godisnja</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="lightblue-box-label">Dan:</span>
+                </td>
+                <td align="left">
+                    <select class="browser-default custom-select" [(ngModel)]="cenovnik.TipKorisnika">
+                        <option selected></option>
+                        <option>Djak</option>
+                        <option>Penzioner</option>
+                        <option>RegularniPutnik</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>              
+                    <div align="center">
+                        <button *ngIf="cenovnik.TipKarte && cenovnik.TipKorisnika" class="btn btn-dark" type="button" (click)="getSpecificnaStavka(cenovnik)">Prikazi cenu</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+</table>
+
+
+<table *ngIf="dodato" class="pos" width="15%">
+    <tr>
+        <td width="100px">
+            <span class="lightblue-box-label">Cena:</span>
+        </td>
+        <td align="left">
+            <input readonly class="form-control" [(ngModel)]="servis.cena"/>
+        </td>
+    </tr>
+</table>

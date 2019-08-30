@@ -12,6 +12,8 @@ export class DetaljiKorisnikComponent implements OnInit {
   mes: string = "";
   sacuvan: boolean = false;
   tip: string = "";
+  slika: string = "";
+  fileData: File = null;
 
   constructor(private servis: RegistracijaService) { }
 
@@ -27,7 +29,19 @@ export class DetaljiKorisnikComponent implements OnInit {
     }
   }
 
+  onChange($event) : void{
+    this.servis.log.KorisnikDetalji.Slika = '';
+    var file : File = $event.target.files[0]
+    var reader : FileReader = new FileReader()
+
+    reader.onload = (e) =>{
+      this.slika = <string>reader.result
+    }
+    reader.readAsDataURL(file)
+  }
+
   updateKorisnik(korisnik: Korisnik){
+    this.servis.log.KorisnikDetalji.Slika = this.slika;
     this.sacuvan = true;
     this.servis.updateKorisnik(korisnik).subscribe((data:string) => this.mes = data);
   }

@@ -1,4 +1,4 @@
-<table class="cenovnik-form" width="30%" border="1" >
+<table *ngIf="izmenaIzabrana==false" class="cenovnik-form" width="30%" border="1" >
     <tbody>
         <tr align="center">
             <th>Linija</th>
@@ -26,12 +26,13 @@
     </tbody>
 </table>
 
+
 <div class="absolute" *ngIf="izbrisan">
-    <h1>{{servisPolazak.message}}</h1>
+    <h2>{{servisPolazak.message}}</h2>
 </div>
 
 
-<table width="30%" *ngIf="izmena">
+<table class="cenovnik-form" width="30%" *ngIf="izmena">
         <tbody>
             <tr>
                 <td width="100px">
@@ -64,6 +65,7 @@
         </tbody>
 </table>
 
-<div class="absolute" *ngIf="mes">
-    <h1>{{mes}}</h1>
+
+<div class="pos" *ngIf="mes">
+    <h2>{{mes}}</h2>
 </div>

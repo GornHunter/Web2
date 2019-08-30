@@ -1,0 +1,57 @@
+<table *ngIf="izmenaIzabrana==false" class="cenovnik-form" width="30%" border=1>
+    <tbody>
+        <tr align="center">
+            <th>Tip Karte</th>
+            <th>Tip Korisnika</th>
+            <th>Cena</th>
+            <th>Opcije</th>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="lightblue-box-label" *ngFor="let stavka of servis.listStavke">
+                    <label>{{stavka.TipKarte}}</label>
+                </span>
+            </td>
+            <td align="center">
+                <span class="lightblue-box-label" *ngFor="let stavka of servis.listStavke">
+                    <label>{{stavka.TipKorisnika}}</label>
+                </span>
+            </td>
+            <td align="center">
+                <span class="lightblue-box-label" *ngFor="let stavka of servis.listStavke">
+                    <label>{{stavka.Cena}}</label>
+                </span>
+            </td>
+            <td align="center">
+                <span class="lightblue-box-label" *ngFor="let stavka of servis.listStavke">
+                    <button (click)="izmeniStavka(stavka.Id)" class="btn btn-warning">Izmeni</button>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table *ngIf="promena" class="pos">
+    <tr>
+        <td width="100px">
+            <span class="lightblue-box-label">Cena:</span>
+        </td>
+        <td align="left">
+            <input class="form-control" [(ngModel)]="servis.cenaIzmena.Cena"/>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>              
+            <div align='right'>
+                <button class="btn btn-dark" (click)="sacuvaj(servis.cenaIzmena)">Sacuvaj</button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="mes" *ngIf="mes">
+    <h2>{{mes}}</h2>
+</div>

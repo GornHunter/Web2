@@ -9,7 +9,8 @@ import { Linija } from '../linija';
 })
 export class LinijaCompComponent implements OnInit {
 
-  private dodata = "";
+  mes: string = "";
+  dodata: boolean = false;
 
   linijaInfo: Linija = {
     Naziv: "",
@@ -22,6 +23,7 @@ export class LinijaCompComponent implements OnInit {
   }
 
   addLinija(): void{
-    this.linijaServis.addLinija(this.linijaInfo).subscribe((data:string) => this.dodata = data);
+    this.dodata = true;
+    this.linijaServis.addLinija(this.linijaInfo).subscribe((data:string) => this.mes = data);
   }
 }

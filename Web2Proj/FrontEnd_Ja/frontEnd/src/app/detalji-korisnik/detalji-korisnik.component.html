@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td width="100px">
-                    <span class="lightblue-box-label">DatumRodjenja:</span>
+                    <span class="lightblue-box-label">Datum Rodjenja:</span>
                 </td>
                 <td align="left">
                     <input class="form-control" [(ngModel)]="servis.log.KorisnikDetalji.DatumRodjenja"/>
@@ -56,6 +56,15 @@
                 </td>
                 <td align="left">
                    <input readonly class="form-control" [(ngModel)]="tip"/>
+                </td>
+            </tr>
+            <tr *ngIf="tip!='RegularniPutnik'">
+                <td width="100px">
+                    <span class="lightblue-box-label">Dokument:</span>
+                </td>
+                <td>
+                    <img id="preview" src="{{servis.log.KorisnikDetalji.Slika}}"/>
+                    <input (change)="onChange($event)" type="file" accept="image/*"/>
                 </td>
             </tr>
             <tr>

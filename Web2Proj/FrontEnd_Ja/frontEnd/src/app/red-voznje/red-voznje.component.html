@@ -1,4 +1,3 @@
-
 <table class="cenovnik-form" width="30%">
     <tbody>
         <tr>
@@ -55,11 +54,11 @@
 </table>
 
 
-<table class="absolute" *ngIf="polasci" border="1">
-    <tr>
+<table class="absolute" *ngIf="polasci" border="1" width="5%">
+    <tr align="center">
         <th>Polasci</th>
     </tr>
-    <tr *ngFor="let v of serviceVoznje.listPolazaka">
+    <tr *ngFor="let v of serviceVoznje.listPolazaka" align="center">
         <td>{{v.Vreme}}</td>
     </tr>
 </table>

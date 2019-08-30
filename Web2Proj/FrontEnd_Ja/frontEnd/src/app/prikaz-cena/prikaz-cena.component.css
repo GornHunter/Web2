@@ -1,0 +1,28 @@
+.lightblue-box-label {
+    display: block;
+    padding: 5px;
+}
+
+.selectbox {
+    height: 30px;
+    width: 200px;
+}
+
+.cenovnik-form {
+    border-collapse: collapse;
+    position: absolute;
+    margin-top: -5%;
+    margin-left: 33%;
+}
+
+.pos{
+    position: absolute;
+    margin-top: 8%;
+    margin-left: 40%;
+}
+
+.absolute{
+    position: absolute;
+    left: 45%;
+    top: 60%
+}

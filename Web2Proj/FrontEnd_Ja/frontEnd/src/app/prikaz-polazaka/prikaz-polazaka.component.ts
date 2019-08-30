@@ -13,6 +13,7 @@ export class PrikazPolazakaComponent implements OnInit {
   mes: string = "";
   izbrisan: boolean = false;
   izmena: boolean = false;
+  izmenaIzabrana: boolean = false;
 
   constructor(private servisPolazak: PolasciService, private servis: RegistracijaService) { }
 
@@ -29,6 +30,7 @@ export class PrikazPolazakaComponent implements OnInit {
   }
 
   izmeniPolazak(id: number){
+    this.izmenaIzabrana = true;
     this.izmena = true;
     this.mes = "";
     this.servisPolazak.getPolazakId(id);

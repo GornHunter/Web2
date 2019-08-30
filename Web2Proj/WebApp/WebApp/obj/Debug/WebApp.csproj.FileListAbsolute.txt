@@ -447,4 +447,4 @@ C:\Users\NoviSad\Documents\GitHub\Web2\Web2Proj\WebApp\WebApp\obj\Debug\WebApp.c
 C:\Users\NoviSad\Documents\GitHub\Web2\Web2Proj\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\NoviSad\Documents\GitHub\Web2\Web2Proj\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\NoviSad\Documents\GitHub\Web2\Web2Proj\WebApp\WebApp\obj\Debug\WebApp.pdb
-C:\Users\GornHunter\Documents\GitHub\Web2\Web2Proj\WebApp\WebApp\obj\Debug\WebApp.Migrations.PrvaMigracija.resources
+C:\Users\GornHunter\Documents\GitHub\Web2\Web2Proj\WebApp\WebApp\obj\Debug\WebApp.Migrations.Migracija.resources

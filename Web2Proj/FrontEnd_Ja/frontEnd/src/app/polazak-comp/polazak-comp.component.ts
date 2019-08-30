@@ -11,7 +11,8 @@ import { Linija } from '../linija';
 })
 export class PolazakCompComponent implements OnInit {
 
-  private dodata = "";
+  dodata: boolean = false;
+  mes: string = "";
 
   naziv: string = "";
   tipDana: TipDana;
@@ -29,8 +30,9 @@ export class PolazakCompComponent implements OnInit {
   }
 
   addPolazak(): void{
+    this.dodata = true;
     this.polazakInfo.Linija.Naziv = this.naziv;
     this.polazakInfo.TipDana = this.tipDana;
-    this.polasciServis.addPolazak(this.polazakInfo).subscribe(() => this.dodata = "Polazak je uspesno dodat.")
+    this.polasciServis.addPolazak(this.polazakInfo).subscribe(() => this.mes = "Polazak je uspesno dodat.")
   }
 }

@@ -13,6 +13,7 @@ namespace WebApp.Persistence.UnitOfWork
         ILinijaRepository LinijaRep { get; set; }
         IPolasciRepository PolasciRep { get; set; }
         IKorisnikRepository KorisnikRep { get; set; }
+        ICenovnikRepository CenovnikRep { get; set; }
 
         int Complete();
     }

@@ -11,12 +11,13 @@
 .cenovnik-form {
     border-collapse: collapse;
     position: absolute;
-    margin-top: -12%;
+    margin-top: -3%;
     margin-left: 35%;
 }
 
 div.absolute
 {
     position : absolute;
-    left: 36%
+    left: 36%;
+    top: 58%
 }

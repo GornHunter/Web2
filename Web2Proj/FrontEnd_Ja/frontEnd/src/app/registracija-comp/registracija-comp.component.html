@@ -72,6 +72,14 @@
                </select>
             </td>
         </tr>
+        <tr *ngIf="korisnikInfo.TipKorisnika!='RegularniPutnik'">
+            <td width="100px">
+                <span class="lightblue-box-label">Dokument:</span>
+            </td>
+            <td>
+                <input (change)="onChange($event)" type="file" accept="image/*"/>
+            </td>
+        </tr>
         <tr>
             <td></td>
             <td>              

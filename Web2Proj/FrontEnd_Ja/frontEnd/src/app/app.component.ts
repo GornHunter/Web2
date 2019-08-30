@@ -3,7 +3,7 @@ import { RegistracijaService } from './registracija.service';
 import { LogovanjeZahtev } from './logovanjeZahtev';
 
 export type EditorType = 'redVoznje' | 'kupovinaKarte' | 'linija' | 'polazak' | 'prikazLinija'| 'prikazPolazaka'
-                          | 'registrovanje' | 'logovanje' | 'izlogovanje' | 'detalji';
+                          | 'registrovanje' | 'logovanje' | 'izlogovanje' | 'detalji' | 'cenovnik' | 'dodajStavka' | 'prikaziCenu';
 
 @Component({
   selector: 'app-root',
@@ -55,6 +55,18 @@ export class AppComponent{
 
   get showDetalji(){
     return this.editor === 'detalji';
+  }
+
+  get showDodajStavka(){
+    return this.editor === 'dodajStavka';
+  }
+
+  get showCenovnik(){
+    return this.editor === 'cenovnik';
+  }
+
+  get showPrikaziCenu(){
+    return this.editor === 'prikaziCenu';
   }
 
   toggleEditor(type: EditorType) {

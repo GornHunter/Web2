@@ -17,6 +17,9 @@ import { RegistracijaCompComponent } from './registracija-comp/registracija-comp
 import { LogovanjeCompComponent } from './logovanje-comp/logovanje-comp.component';
 import { LogoutComponent } from './logout/logout.component';
 import { DetaljiKorisnikComponent } from './detalji-korisnik/detalji-korisnik.component';
+import { CenovnikComponent } from './cenovnik/cenovnik.component';
+import { DodajStavkaComponent } from './dodaj-stavka/dodaj-stavka.component';
+import { PrikazCenaComponent } from './prikaz-cena/prikaz-cena.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { DetaljiKorisnikComponent } from './detalji-korisnik/detalji-korisnik.co
     RegistracijaCompComponent,
     LogovanjeCompComponent,
     LogoutComponent,
-    DetaljiKorisnikComponent
+    DetaljiKorisnikComponent,
+    CenovnikComponent,
+    DodajStavkaComponent,
+    PrikazCenaComponent
   ],
   imports: [
     BrowserModule,

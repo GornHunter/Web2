@@ -16,32 +16,9 @@ namespace WebApp.Controllers
     {
         IUnitOfWork _unitOfWork;
 
-        public static List<Karta> karte = new List<Karta>
-        {
-            new Karta
-            {
-                Id = 1,
-                TipKarte = TipKarte.Dnevna,
-                TrajanjeKarte = "18/7/2019 12:12:14"
-            },
-
-            new Karta
-            {
-                Id = 2,
-                TipKarte = TipKarte.Vremenska,
-                TrajanjeKarte = "19/3/2019 34:45:67"
-            }
-        };
-
         public KupovinaKarteController(IUnitOfWork unitofWork)
         {
             _unitOfWork = unitofWork;
-        }
-
-        [Route("GetKarta")]
-        public List<Karta> GetKarte()
-        {
-            return karte;
         }
         
         [Route("PostKarta")]
@@ -110,7 +87,7 @@ namespace WebApp.Controllers
             _unitOfWork.KartaRep.Add(novaKarta);
             _unitOfWork.Complete();
 
-            return Ok("Karta je uspesno kupljena.");
+            return Ok($"{karta} karta je uspesno kupljena.");
         }
 
         private void sendEmail(string body)

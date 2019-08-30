@@ -12,6 +12,7 @@ export class PrikazLinijaComponent implements OnInit {
 
   promena: boolean = false;
   izbrisan: boolean = false;
+  izmenaIzabrana: boolean = false;
   mes: string = "";
 
   constructor(private linijeServis: LinijaService, private servis: RegistracijaService) { }
@@ -29,7 +30,9 @@ export class PrikazLinijaComponent implements OnInit {
   }
 
   izmeniLiniju(id: number){
+    this.izmenaIzabrana = true;
     this.promena = true;
+    this.linijeServis.message = "";
     this.mes = "";
     this.linijeServis.getLinijaId(id);
   }

@@ -5,7 +5,8 @@ export class Korisnik{
     Lozinka: string;
     DatumRodjenja: string;
     Adresa: string;
-    TipKorisnika: TipKorisnika
+    TipKorisnika: TipKorisnika;
+    Slika: string
 }
 
 export enum TipKorisnika{
