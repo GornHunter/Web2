@@ -11,6 +11,7 @@ namespace WebApp.Persistence.Repository
     public interface ILinijaRepository : IRepository<Linija, int>
     {
         Linija GetLinija(Expression<Func<Linija, bool>> predicate);
+        List<Linija> GetAllLinije();
         List<Linija> GetLinije(Expression<Func<Linija, bool>> predicate);
     }
 }
