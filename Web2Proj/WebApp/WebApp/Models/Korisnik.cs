@@ -30,5 +30,10 @@ namespace WebApp.Models
         public string Slika { get; set; }
 
         public Korisnik() { }
+
+        public Korisnik(TipKorisnika tip)
+        {
+            TipKorisnika = tip;
+        }
     }
 }

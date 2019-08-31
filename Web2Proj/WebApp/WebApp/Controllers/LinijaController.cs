@@ -120,11 +120,8 @@ namespace WebApp.Controllers
                 else if(linija.Naziv == item.Naziv && linija.Id != item.Id)
                 {
                     return Ok("Linija sa tim imenom vec postoji!");
-                }
-                
-            }
-
-            //lin = _unitOfWork.LinijaRep.GetLinija(x => x.Id == linija.Id);         
+                }               
+            }       
 
             lin.Naziv = linija.Naziv;
             lin.TipVoznje = linija.TipVoznje;
