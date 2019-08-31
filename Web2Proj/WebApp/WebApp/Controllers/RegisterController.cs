@@ -34,9 +34,9 @@ namespace WebApp.Controllers
 
             foreach(var item in kor)
             {
-                if(item.Email == korisnik.Email || item.Lozinka == korisnik.Lozinka)
+                if(item.Email == korisnik.Email)
                 {
-                    return Ok("Korisnik sa tom email adresom i lozinkom vec postoji.");
+                    return Ok("Korisnik sa tom email adresom vec postoji.");
                 }
             }
 
