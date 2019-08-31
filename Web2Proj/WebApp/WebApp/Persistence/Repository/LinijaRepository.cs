@@ -26,6 +26,12 @@ namespace WebApp.Persistence.Repository
             return null;
         }
 
+        public List<Linija> GetAllLinije()
+        {
+            var response = _context.Linije.ToList();
+            return response;
+        }
+
         public List<Linija> GetLinije(Expression<Func<Linija, bool>> predicate)
         {
             if (_context.Linije.Any(predicate))
