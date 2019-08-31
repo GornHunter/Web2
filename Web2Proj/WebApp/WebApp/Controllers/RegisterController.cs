@@ -76,7 +76,7 @@ namespace WebApp.Controllers
 
             foreach(var item in korisnici)
             {
-                if (item.Email == korisnik.Email && item.Lozinka == korisnik.Lozinka && item.Id == korisnik.Id)
+                if (item.Email == korisnik.Email && item.Id == korisnik.Id)
                 {
                     kor.Email = korisnik.Email;
                     kor.Ime = korisnik.Ime;
@@ -90,7 +90,7 @@ namespace WebApp.Controllers
 
                     return Ok("Uspesno ste azurirali profil.");
                 }
-                else if ((item.Email == korisnik.Email || item.Lozinka == korisnik.Lozinka) && item.Id != korisnik.Id)
+                else if (item.Email == korisnik.Email && item.Id != korisnik.Id)
                     return Ok("Korisnik vec postoji.");
             }
 
